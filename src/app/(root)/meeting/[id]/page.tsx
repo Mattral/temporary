@@ -1,3 +1,5 @@
+/*
+
 "use client";
 
 import Alert from "@/components/Alert";
@@ -49,3 +51,5 @@ const Meeting = ({ params }: { params: { id: string } }) => {
 };
 
 export default Meeting;
+
+*/
