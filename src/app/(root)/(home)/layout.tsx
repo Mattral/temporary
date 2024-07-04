@@ -1,3 +1,4 @@
+/*
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import { Metadata } from "next";
@@ -26,3 +27,4 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
 };
 
 export default HomeLayout;
+*/
