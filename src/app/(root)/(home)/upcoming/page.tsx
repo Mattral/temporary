@@ -1,4 +1,4 @@
-import CallList from "@/components/CallList";
+/*import CallList from "@/components/CallList";
 import React from "react";
 
 const Upcoming = () => {
@@ -33,3 +33,4 @@ return (
 };
 
 export default Upcoming;
+*/

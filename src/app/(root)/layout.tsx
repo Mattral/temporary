@@ -1,3 +1,5 @@
+/*
+
 import { StreamVideoProvider } from "@/providers/StreamClientProvider";
 import React, { ReactNode } from "react";
 
@@ -10,3 +12,5 @@ const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
 };
 
 export default RootLayout;
+
+*/

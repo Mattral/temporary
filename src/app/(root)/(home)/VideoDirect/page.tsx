@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 
 import Alert from "components/Alert";
 import Loader from "components/Loader";
@@ -49,3 +49,4 @@ const Meeting = ({ params }: { params: { id: string } }) => {
 };
 
 export default Meeting;
+*/

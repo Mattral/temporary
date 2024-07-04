@@ -1,3 +1,4 @@
+/*
 "use client";
 
 import { useUser } from "@clerk/nextjs";
@@ -84,3 +85,4 @@ const PersonalRoom = () => {
 };
 
 export default PersonalRoom;
+*/

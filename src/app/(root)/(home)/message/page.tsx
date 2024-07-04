@@ -1,3 +1,4 @@
+/*
 import MeetingTypeList from "components/MeetingTypeList";
 import React from "react";
 
@@ -33,3 +34,4 @@ const Home = () => {
 export default Home;
 
 //<MeetingTypeList /> in line 28 will get you list of blocks
+*/
