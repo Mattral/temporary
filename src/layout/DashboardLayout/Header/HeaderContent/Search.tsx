@@ -23,7 +23,7 @@ const Search = () => (
         inputProps={{
           'aria-label': 'weight'
         }}
-        placeholder="Ctrl + K"
+        placeholder="Looking for anything?"
         sx={{ '& .MuiOutlinedInput-input': { p: 1.5 } }}
       />
     </FormControl>

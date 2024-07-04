@@ -94,25 +94,25 @@ const Header = () => {
               sx={{ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 }}
               color="secondary.main"
               component={Link}
-              href="/login"
+              href="#"
               target="_blank"
               underline="none"
             >
-              Dashboard
+              About
             </Links>
             <Links className="header-link" color="primary" underline="none">
-              Components
+              Services
             </Links>
             <Links
               className="header-link"
               color="secondary.main"
-              href="https://phoenixcoded.gitbook.io/able-pro/v/nextjs"
+              href="#"
               target="_blank"
               underline="none"
             >
-              Documentation
+              Pricing
             </Links>
-            <Links href="https://links.codedthemes.com/vYUWM" target="_blank" underline="none">
+            <Links href="#" target="_blank" underline="none">
               <IconButton
                 size="large"
                 shape="rounded"
@@ -130,14 +130,14 @@ const Header = () => {
               <AnimateButton>
                 <Button
                   component={Links}
-                  href="https://1.envato.market/c/1289604/275988/4415?subId1=phoenixcoded&u=https%3A%2F%2Fthemeforest.net%2Fitem%2Fable-pro-responsive-bootstrap-4-admin-template%2F19300403"
+                  href="/login"
                   disableElevation
                   startIcon={<ExportSquare />}
                   color="success"
                   size="large"
                   variant="contained"
                 >
-                  Purchase Now
+                  Login
                 </Button>
               </AnimateButton>
             </Box>

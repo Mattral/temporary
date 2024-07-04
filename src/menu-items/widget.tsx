@@ -43,6 +43,13 @@ const widget: NavItemType = {
       type: 'item',
       url: '/widget/chart',
       icon: icons.chart
+    },
+    {
+      id: 'Genarate Legal Document',
+      title: <FormattedMessage id="Genarate Legal Document" />,
+      type: 'item',
+      url: '/widget/chart',
+      icon: icons.chart
     }
   ]
 };

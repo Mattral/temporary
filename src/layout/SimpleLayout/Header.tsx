@@ -123,50 +123,53 @@ const Header = () => {
                 sx={{ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 }}
                 color="secondary.main"
                 component={Link}
-                href="/login"
+                href="#"
                 target="_blank"
                 underline="none"
               >
-                Dashboard
+                About
               </Links>
               <Links className="header-link" color="secondary.main" component={Link} href="/components-overview/buttons" underline="none">
-                Components
+                Services
               </Links>
               <Links
                 className="header-link"
                 color="secondary.main"
-                href="https://phoenixcoded.gitbook.io/able-pro/v/nextjs"
+                href="#"
                 target="_blank"
                 underline="none"
               >
-                Documentation
+                Pricing
               </Links>
-              <Links href="https://links.codedthemes.com/vYUWM" target="_blank" underline="none">
-                <IconButton
-                  size="large"
-                  shape="rounded"
-                  color="secondary"
-                  sx={{
-                    bgcolor: 'secondary.light',
-                    color: 'secondary.darker',
-                    '&:hover': { color: 'secondary.lighter', bgcolor: 'secondary.darker' }
-                  }}
-                >
-                  <DocumentDownload />
-                </IconButton>
-              </Links>
+
               <Box sx={{ display: 'inline-block' }}>
                 <AnimateButton>
                   <Button
                     component={Links}
-                    href={url}
+                    href="/login"
                     disableElevation
                     startIcon={<ExportSquare />}
                     color="success"
                     size="large"
                     variant="contained"
                   >
-                    Purchase Now
+                    Login
+                  </Button>
+                </AnimateButton>
+              </Box>
+              
+              <Box sx={{ display: 'inline-block' }}>
+                <AnimateButton>
+                  <Button
+                    component={Links}
+                    href="/login"
+                    disableElevation
+                    startIcon={<ExportSquare />}
+                    color="success"
+                    size="large"
+                    variant="contained"
+                  >
+                    Register
                   </Button>
                 </AnimateButton>
               </Box>

@@ -50,16 +50,7 @@ const Gender = ({ gender, handelFilter }: { gender: string[]; handelFilter: (typ
                 }
                 label="Female"
               />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={gender.some((item) => item === 'kids')}
-                    onChange={() => handelFilter('gender', 'kids')}
-                    color="error"
-                  />
-                }
-                label="Kids"
-              />
+              
             </Stack>
           </Box>
         </>
@@ -95,27 +86,27 @@ const Categories = ({ categories, handelFilter }: { categories: string[]; handel
               <FormControlLabel
                 control={<Checkbox checked={categories.some((item) => item === 'electronics')} />}
                 onChange={() => handelFilter('categories', 'electronics')}
-                label="Electronics"
+                label="Real Estate"
               />
               <FormControlLabel
                 control={<Checkbox checked={categories.some((item) => item === 'fashion')} />}
                 onChange={() => handelFilter('categories', 'fashion')}
-                label="Fashion"
+                label="Insurance"
               />
               <FormControlLabel
                 control={<Checkbox checked={categories.some((item) => item === 'books')} />}
                 onChange={() => handelFilter('categories', 'books')}
-                label="Book"
+                label="Finance"
               />
               <FormControlLabel
                 control={<Checkbox checked={categories.some((item) => item === 'toys')} />}
                 onChange={() => handelFilter('categories', 'toys')}
-                label="Toys"
+                label="International Relations"
               />
               <FormControlLabel
                 control={<Checkbox checked={categories.some((item) => item === 'kitchen')} />}
                 onChange={() => handelFilter('categories', 'kitchen')}
-                label="Home & Kitchen"
+                label="Patent"
               />
             </Stack>
           </Box>

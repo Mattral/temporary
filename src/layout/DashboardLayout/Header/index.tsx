@@ -59,6 +59,8 @@ const Header = () => {
     </Toolbar>
   );
 
+  //Above, header contents are search to profile components bottoms
+
   // APP-BAR PARAMS
   const appBar: AppBarProps = {
     position: 'fixed',

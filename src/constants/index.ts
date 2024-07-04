@@ -17,7 +17,7 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/icons/msg.svg",
-    route: "/message",
+    route: "",
     label: "Message",
   },
   {

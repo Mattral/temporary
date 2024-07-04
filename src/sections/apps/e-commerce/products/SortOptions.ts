@@ -5,11 +5,11 @@ import { SortOptionsProps } from 'types/e-commerce';
 const SortOptions: SortOptionsProps[] = [
   {
     value: 'high',
-    label: 'Price: High To Low'
+    label: 'Rating: High To Low'
   },
   {
     value: 'low',
-    label: 'Price: Low To High'
+    label: 'Rating: Low To High'
   },
   {
     value: 'popularity',
@@ -21,7 +21,7 @@ const SortOptions: SortOptionsProps[] = [
   },
   {
     value: 'new',
-    label: 'Fresh Arrivals'
+    label: 'Latest'
   }
 ];
 
