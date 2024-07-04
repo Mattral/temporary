@@ -9,9 +9,9 @@ import {
   SheetClose,
   SheetContent,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { sidebarLinks } from "@/constants";
-import { cn } from "@/lib/utils";
+} from "components/ui/sheet";
+import { sidebarLinks } from "constants/index";
+import { cn } from "lib/utils";
 
 const MobileNav = () => {
   const pathname = usePathname();

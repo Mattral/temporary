@@ -20,6 +20,8 @@ import MainCard from 'components/MainCard';
 // ASSETS
 import { DocumentUpload } from 'iconsax-react';
 
+import TP from './timepic';
+
 // CONSTANT
 const prices = [
   {
@@ -91,7 +93,10 @@ function AddNewProduct() {
   };
 
   return (
+    
+    
     <MainCard>
+     <TP />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <MainCard>

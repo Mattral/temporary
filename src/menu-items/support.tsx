@@ -153,38 +153,13 @@ const support: NavItemType = {
       icon: icons.disabledMenu,
       disabled: true
     },
-    {
-      id: 'oval-chip-menu',
-      title: <FormattedMessage id="oval-chip-menu" />,
-      type: 'item',
-      url: '#',
-      icon: icons.chipMenu,
-      chip: {
-        label: 'Fire',
-        color: 'error',
-        variant: 'outlined',
-        size: 'small'
-      }
-    },
-    {
-      id: 'documentation',
-      title: <FormattedMessage id="documentation" />,
-      type: 'item',
-      url: 'https://phoenixcoded.gitbook.io/able-pro/v/nextjs',
-      icon: icons.documentation,
-      external: true,
-      target: true,
-      chip: {
-        label: 'gitbook',
-        color: 'info',
-        size: 'small'
-      }
-    },
+
+
     {
       id: 'roadmap',
       title: <FormattedMessage id="roadmap" />,
       type: 'item',
-      url: 'https://phoenixcoded.gitbook.io/able-pro/v/nextjs/roadmap',
+      url: '#',
       icon: icons.roadmap,
       external: true,
       target: true

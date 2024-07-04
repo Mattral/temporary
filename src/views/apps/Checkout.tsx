@@ -9,6 +9,9 @@ import CircularLoader from 'components/CircularLoader';
 import CheckoutTab from 'sections/apps/e-commerce/checkout/CheckoutTab';
 import { useGetCart } from 'api/cart';
 
+// PROJECT IMPORTS: Add your Products component here
+import TP from './timepic'; 
+
 // ==============================|| ECOMMERCE - CHECKOUT ||============================== //
 
 const Checkout = () => {
@@ -21,8 +24,16 @@ const Checkout = () => {
       </Box>
     </MainCard>
   );
+  
 
-  return cartLoading ? loader : <CheckoutTab cart={cart} />;
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <TP/>
+      {cartLoading ? loader : <CheckoutTab cart={cart} />}
+      
+      
+    </Box>
+  );
 };
 
 export default Checkout;

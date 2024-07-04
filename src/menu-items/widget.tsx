@@ -28,7 +28,7 @@ const widget: NavItemType = {
       title: <FormattedMessage id="statistics" />,
       type: 'item',
       url: '/widget/statistics',
-      icon: icons.statistics
+      icon: icons.chart
     },
     {
       id: 'data',
@@ -38,18 +38,11 @@ const widget: NavItemType = {
       icon: icons.data
     },
     {
-      id: 'chart',
-      title: <FormattedMessage id="chart" />,
-      type: 'item',
-      url: '/widget/chart',
-      icon: icons.chart
-    },
-    {
       id: 'Genarate Legal Document',
       title: <FormattedMessage id="Genarate Legal Document" />,
       type: 'item',
       url: '/widget/chart',
-      icon: icons.chart
+      icon: icons.statistics
     }
   ]
 };

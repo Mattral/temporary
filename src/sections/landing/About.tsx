@@ -1,5 +1,8 @@
-import React from 'react';
-import { Container, Grid, Typography, Box } from '@mui/material';
+// MATERIAL - UI
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 // ==============================|| ABOUT PANEL ||============================== //
 
@@ -17,16 +20,18 @@ const AboutPanel = () => {
       sx={{
         p: 5,
         background: 'linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(100,181,246,1) 100%)',
-        minHeight: '100vh',
+        minHeight: '100vh'
       }}
     >
       <Container>
-        <Typography variant="h2" align="center" mb={5}>
-          {title}
-        </Typography>
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={3} alignItems="center" justifyContent="center">
+          <Grid item xs={12}>
+            <Typography variant="h2" align="center" mb={5} sx={{ color: 'rgba(0, 0, 0, 0.87)' }}>
+              {title}
+            </Typography>
+          </Grid>
           <Grid item xs={12} md={6}>
-            <Typography variant="body1" style={{ whiteSpace: 'pre-line' }}>
+            <Typography variant="body1" style={{ whiteSpace: 'pre-line' }} sx={{ color: 'rgba(0, 0, 0, 0.87)' }}>
               {content}
             </Typography>
           </Grid>

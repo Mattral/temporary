@@ -149,7 +149,7 @@ const Header = () => {
                     href="/login"
                     disableElevation
                     startIcon={<ExportSquare />}
-                    color="success"
+                    color="info"
                     size="large"
                     variant="contained"
                   >
@@ -162,7 +162,7 @@ const Header = () => {
                 <AnimateButton>
                   <Button
                     component={Links}
-                    href="/login"
+                    href="/register"
                     disableElevation
                     startIcon={<ExportSquare />}
                     color="success"
@@ -216,7 +216,7 @@ const Header = () => {
                         <ListItemText primary="All Components" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
-                    <Links sx={linksSx} href="https://codedthemes.com/?s=able+pro" target="_blank">
+                    <Links sx={linksSx} href="#" target="_blank">
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
@@ -224,7 +224,7 @@ const Header = () => {
                         <ListItemText primary="Free Version" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
-                    <Links sx={linksSx} href="https://phoenixcoded.gitbook.io/able-pro/v/nextjs" target="_blank">
+                    <Links sx={linksSx} href="#" target="_blank">
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
@@ -232,7 +232,7 @@ const Header = () => {
                         <ListItemText primary="Documentation" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
-                    <Links sx={linksSx} href="https://phoenixcoded.authordesk.app/" target="_blank">
+                    <Links sx={linksSx} href="#" target="_blank">
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
@@ -242,7 +242,7 @@ const Header = () => {
                     </Links>
                     <Links
                       sx={linksSx}
-                      href="https://1.envato.market/c/1289604/275988/4415?subId1=phoenixcoded&u=https%3A%2F%2Fthemeforest.net%2Fitem%2Fable-pro-responsive-bootstrap-4-admin-template%2F19300403"
+                      href="#"
                       target="_blank"
                     >
                       <ListItemButton component="span">
