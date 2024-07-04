@@ -1,5 +1,5 @@
-'use client';
-/*
+
+
 // MATERIAL - UI
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -9,11 +9,11 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 // PROJECT IMPORTS
 import MainCard from 'components/MainCard';
-*/
-import Previous from 'app/(root)/(home)/previous/page'
+
+
 
 // ==============================|| PLUGIN - RECAPTCHA ||============================== //
-/*
+
 const RecaptchaPage = () => {
   const handleOnChange = () => {};
   return (
@@ -26,16 +26,6 @@ const RecaptchaPage = () => {
         </MainCard>
       </Grid>
     </Grid>
-  );
-};
-
-export default RecaptchaPage;
-*/
-
-const RecaptchaPage = () => {
-  //const handleOnChange = () => {};
-  return (
-    <Previous/>
   );
 };
 
