@@ -56,6 +56,7 @@ const Header = () => {
     setDrawerToggle(open);
   };
 
+  // @ts-ignore
   let url = '';
   if (typeof window !== 'undefined') {
     let value: string = window.location.search;
