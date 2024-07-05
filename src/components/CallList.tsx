@@ -2,13 +2,11 @@
 
 import { useGetCalls } from "hooks/useGetCalls";
 import { Call, CallRecording } from "@stream-io/video-react-sdk";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Loader from "./Loader";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
-  const router = useRouter();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
 
   const getCalls = () => {
