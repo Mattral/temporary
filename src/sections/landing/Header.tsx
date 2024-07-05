@@ -100,7 +100,7 @@ const HeaderPage = () => {
                   >
                     Browse the Learning Centre to access hundreds of articles & guides. Prepare documents & contracts in just a few clicks. 
                     Connect with legal advisors in affordable video sessions. 
-                    With Law On Earth, you'll be able to understand your legal matter and self-act safely and affordably.
+                    With Law On Earth, you&apos;ll be able to understand your legal matter and self-act safely and affordably.
                   </Typography>
                 </motion.div>
               </Grid>
