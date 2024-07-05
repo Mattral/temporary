@@ -71,6 +71,7 @@ const Header = () => {
     setDrawerToggle(open);
   };
 
+  let url='';
   let value: string = window.location.search;
   const params = new URLSearchParams(value);
   const ispValue = params.get('isp');
