@@ -6,10 +6,8 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Loader from "./Loader";
 
-
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
-  const { endedCalls, upcomingCalls, callRecordings, isLoading } =
-    useGetCalls();
+  const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
   const router = useRouter();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
 
@@ -65,8 +63,16 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       {calls && calls.length > 0 ? (
-        calls.map((meeting: Call | CallRecording) => (
-          
+        calls.map((meeting: Call | CallRecording, index: number) => (
+          <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold">
+              {meeting.title || meeting.id}
+            </h2>
+            <p className="text-gray-600">
+              {meeting.date ? `Date: ${meeting.date}` : ""}
+            </p>
+            {/* Add more details as needed */}
+          </div>
         ))
       ) : (
         <h1 className="text-2xl font-bold text-white">{noCallsMessage}</h1>
