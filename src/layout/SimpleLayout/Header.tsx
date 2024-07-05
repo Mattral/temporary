@@ -30,7 +30,7 @@ import AnimateButton from 'components/@extended/AnimateButton';
 import Logo from 'components/logo';
 
 // ASSETS
-import { DocumentDownload, ExportSquare, HambergerMenu, Minus } from 'iconsax-react';
+import { ExportSquare, HambergerMenu, Minus } from 'iconsax-react';
 
 // TYPES
 import { ThemeDirection } from 'types/config';
