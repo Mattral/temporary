@@ -1,11 +1,7 @@
 'use client';
 
 import { useState, cloneElement, ReactElement } from 'react';
-
-// NEXT
 import Link from 'next/link';
-
-// MATERIAL - UI
 import { alpha, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import AppBar from '@mui/material/AppBar';
@@ -23,16 +19,10 @@ import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-
-// PROJECT IMPORTS
 import IconButton from 'components/@extended/IconButton';
 import AnimateButton from 'components/@extended/AnimateButton';
 import Logo from 'components/logo';
-
-// ASSETS
 import { ExportSquare, HambergerMenu, Minus } from 'iconsax-react';
-
-// TYPES
 import { ThemeDirection } from 'types/config';
 
 interface ElevationScrollProps {
@@ -40,7 +30,6 @@ interface ElevationScrollProps {
   window?: Window | Node;
 }
 
-// elevation scroll
 function ElevationScroll({ children, window }: ElevationScrollProps) {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -55,15 +44,11 @@ function ElevationScroll({ children, window }: ElevationScrollProps) {
   });
 }
 
-// ==============================|| COMPONENTS - APP BAR ||============================== //
-
 const Header = () => {
   const theme = useTheme();
-
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerToggle, setDrawerToggle] = useState<boolean>(false);
 
-  /** Method called on multiple components with different event types */
   const drawerToggler = (open: boolean) => (event: any) => {
     if (event.type! === 'keydown' && (event.key! === 'Tab' || event.key! === 'Shift')) {
       return;
@@ -71,16 +56,19 @@ const Header = () => {
     setDrawerToggle(open);
   };
 
-  let url='';
-  let value: string = window.location.search;
-  const params = new URLSearchParams(value);
-  const ispValue = params.get('isp');
+  let url = '';
+  if (typeof window !== 'undefined') {
+    let value: string = window.location.search;
+    const params = new URLSearchParams(value);
+    const ispValue = params.get('isp');
 
-  if (ispValue !== null && parseInt(ispValue) === 1) {
-    url = 'https://1.envato.market/OrJ5nn';
-  } else {
-    url = 'https://1.envato.market/zNkqj6';
+    if (ispValue !== null && parseInt(ispValue) === 1) {
+      url = 'https://1.envato.market/OrJ5nn';
+    } else {
+      url = 'https://1.envato.market/zNkqj6';
+    }
   }
+
 
   const linksSx = {
     textDecoration: 'none'
