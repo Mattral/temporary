@@ -1,3 +1,4 @@
+// src/views/apps/ProductDetails.tsx
 
 import React from "react";
 
@@ -14,7 +15,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ id }) => {
   );
 };
 
-const ProductDetails = () => {
+const ProductDetailsWithTime: React.FC = () => {
   const now = new Date();
 
   const time = now.toLocaleTimeString("en-US", {
@@ -27,22 +28,20 @@ const ProductDetails = () => {
 
   return (
     <section className="relative flex flex-col items-center justify-center gap-10 text-white h-screen">
-      {/* Background Image with Adjusted Height */}
       <div
         className="h-[300px] w-[1000px] rounded-[20px] bg-hero bg-cover bg-center relative flex flex-col items-center justify-center"
         style={{
           backgroundImage: "url('/assets/images/hero-background.png')",
           borderRadius: "20px",
-          height: "300px",  // Ensure height is explicitly set in inline style
+          height: "300px",
           width: "1000px",
-          padding: "50px",  // Add padding to create space from borders
-          boxSizing: "border-box",  // Ensure padding is included in the height
-          position: "relative",  // Ensure positioning context for absolute positioning
-          backgroundPosition: "center", // Center the background image
+          padding: "50px",
+          boxSizing: "border-box",
+          position: "relative",
+          backgroundPosition: "center",
         }}
       >
         <div className="absolute top-0 left-0 p-4">
-          {/* Text Overlay */}
           <h2
             className="bg-opacity-75 max-w-[270px] rounded py-2 text-left text-base font-normal"
             style={{
@@ -56,7 +55,6 @@ const ProductDetails = () => {
             Upcoming Meeting at: <span style={{ color: "white" }}>{time}</span>
           </h2>
         </div>
-        {/* Empty space */}
         <div className="absolute top-[50px]"> <p>_</p></div>
         <div className="absolute top-[120px] left-0 p-4">
           <div className="flex flex-col gap-2">
@@ -74,8 +72,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
-
-
-
-
+export { ProductDetails, ProductDetailsWithTime };
