@@ -1,6 +1,19 @@
 
 import React from "react";
 
+type ProductDetailsProps = {
+  id: string;
+};
+
+const ProductDetails: React.FC<ProductDetailsProps> = ({ id }) => {
+  return (
+    <div>
+      <h1>Product Details</h1>
+      <p>Product ID: {id}</p>
+    </div>
+  );
+};
+
 const ProductDetails = () => {
   const now = new Date();
 
