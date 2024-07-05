@@ -1,8 +1,7 @@
 // src/components/ui/card.tsx
 
 import * as React from "react";
-
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"; // Ensure this import is correct
 
 const Card = React.forwardRef<
   HTMLDivElement,
