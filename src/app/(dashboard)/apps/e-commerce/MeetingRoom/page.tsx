@@ -1,5 +1,5 @@
 // src/app/(dashboard)/apps/e-commerce/product-details/[id]/page.tsx
-
+import Products from 'views/apps/Products';
 import { ProductDetails } from 'views/apps/ProductDetails';
 
 type Props = {
@@ -10,8 +10,9 @@ type Props = {
 
 export default function Page({ params }: Props) {
   const { id } = params;
+  <ProductDetails id={id} />
 
-  return <ProductDetails id={id} />;
+  return <Products />;
 }
 
 export async function generateStaticParams() {

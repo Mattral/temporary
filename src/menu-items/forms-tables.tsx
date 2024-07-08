@@ -201,57 +201,8 @@ const formsTables: NavItemType = {
           url: '/tables/react-table/empty'
         }
       ]
-    },
-    {
-      id: 'mui-tables',
-      title: <FormattedMessage id="mui-table" />,
-      type: 'collapse',
-      icon: icons.muiTables,
-      children: [
-        {
-          id: 'mui-table',
-          title: <FormattedMessage id="basic" />,
-          type: 'item',
-          url: '/tables/mui-table/basic'
-        },
-        {
-          id: 'mui-dense',
-          title: <FormattedMessage id="dense" />,
-          type: 'item',
-          url: '/tables/mui-table/dense'
-        },
-        {
-          id: 'mui-enhanced',
-          title: <FormattedMessage id="enhanced" />,
-          type: 'item',
-          url: '/tables/mui-table/enhanced'
-        },
-        {
-          id: 'mui-data-table',
-          title: <FormattedMessage id="datatable" />,
-          type: 'item',
-          url: '/tables/mui-table/datatable'
-        },
-        {
-          id: 'mui-custom',
-          title: <FormattedMessage id="custom" />,
-          type: 'item',
-          url: '/tables/mui-table/custom'
-        },
-        {
-          id: 'mui-fixed-header',
-          title: <FormattedMessage id="fixed-header" />,
-          type: 'item',
-          url: '/tables/mui-table/fixed-header'
-        },
-        {
-          id: 'mui-collapse',
-          title: <FormattedMessage id="collapse" />,
-          type: 'item',
-          url: '/tables/mui-table/collapse'
-        }
-      ]
     }
+
   ]
 };
 

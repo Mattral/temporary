@@ -44,7 +44,7 @@ function ComingSoonPage() {
                       <Box sx={{ color: theme.palette.primary.main, display: 'inline-block' }}>Able Pro</Box> - The Bootstrap Admin Template
                     </Typography>
                     <Typography color="textSecondary">
-                      Presenting Material-UI based React Dashboard Template to build performance centric websites and applications.
+                      Presenting law On Earth.
                     </Typography>
                   </Stack>
                 </Grid>

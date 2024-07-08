@@ -62,13 +62,13 @@ const applications: NavItemType = {
           id: 'customer-list',
           title: <FormattedMessage id="list" />,
           type: 'item',
-          url: '/apps/CustomerList'
+          url: '/apps/customer/customer-list'
         },
         {
           id: 'customer-card',
           title: <FormattedMessage id="cards" />,
           type: 'item',
-          url: '/apps/CustomerCard'
+          url: '/apps/customer/customer-card'
         }
       ]
     },
@@ -108,33 +108,33 @@ const applications: NavItemType = {
       icon: icons.ecommerce,
       children: [
         {
-          id: 'products',
+          id: 'PersonalRoom',
           title: <FormattedMessage id="Personal Room" />,
           type: 'item',
-          url: '/apps/e-commerce/products'
+          url: '/apps/e-commerce/PersonalRoom'
         },
         {
-          id: 'product-details',
+          id: 'MeetingRoom',
           title: <FormattedMessage id="Meeting Room" />,
           type: 'item',
-          url: '/apps/e-commerce/product-details',
+          url: '/apps/e-commerce/MeetingRoom',
           breadcrumbs: false
         },
         {
-          id: 'product-list',
-          title: <FormattedMessage id="Scheduled Meetings" />,
+          id: 'Schedule',
+          title: <FormattedMessage id="Schedule" />,
           type: 'item',
-          url: '/apps/e-commerce/product-list'
+          url: '/apps/e-commerce/Schedule'
         },
         {
-          id: 'add-new-product',
+          id: 'add-new-schedule',
           title: <FormattedMessage id="add-new-schedule" />,
           type: 'item',
-          url: '/apps/e-commerce/add-new-product'
+          url: '/apps/e-commerce/add-new-schedule'
         },
         {
           id: 'checkout',
-          title: <FormattedMessage id="Recordings and History" />,
+          title: <FormattedMessage id="Payments and History" />,
           type: 'item',
           url: '/apps/e-commerce/checkout'
         }
