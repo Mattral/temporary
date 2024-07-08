@@ -62,13 +62,13 @@ const applications: NavItemType = {
           id: 'customer-list',
           title: <FormattedMessage id="list" />,
           type: 'item',
-          url: '/apps/customer-list'
+          url: '/apps/CustomerList'
         },
         {
           id: 'customer-card',
           title: <FormattedMessage id="cards" />,
           type: 'item',
-          url: '/apps/customer-card'
+          url: '/apps/CustomerCard'
         }
       ]
     },
@@ -109,7 +109,7 @@ const applications: NavItemType = {
       children: [
         {
           id: 'products',
-          title: <FormattedMessage id="Advisors" />,
+          title: <FormattedMessage id="Personal Room" />,
           type: 'item',
           url: '/apps/e-commerce/products'
         },
@@ -117,12 +117,12 @@ const applications: NavItemType = {
           id: 'product-details',
           title: <FormattedMessage id="Meeting Room" />,
           type: 'item',
-          url: '/apps/e-commerce/product-details/1',
+          url: '/apps/e-commerce/product-details',
           breadcrumbs: false
         },
         {
           id: 'product-list',
-          title: <FormattedMessage id="SCcheduled Meetings" />,
+          title: <FormattedMessage id="Scheduled Meetings" />,
           type: 'item',
           url: '/apps/e-commerce/product-list'
         },
