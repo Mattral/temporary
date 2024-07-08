@@ -1,11 +1,11 @@
 // RecaptchaPage.tsx
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';  // Import dynamic from next/dynamic
+import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import MainCard from 'components/MainCard';
+import { useClient } from 'next/compat'; // Import useClient from next/compat
 
-// Import ReCAPTCHA dynamically with ssr: false to avoid SSR issues
 const DynamicRecaptcha = dynamic(() => import('react-google-recaptcha'), {
   ssr: false,
 });
@@ -39,4 +39,5 @@ const RecaptchaPage = () => {
   );
 };
 
-export default RecaptchaPage;
+// Wrap the component with useClient
+export default useClient(RecaptchaPage);
