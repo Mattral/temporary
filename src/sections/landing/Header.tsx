@@ -24,15 +24,16 @@ import AnimateButton from 'components/@extended/AnimateButton';
 
 const HeaderPage = () => {
   const theme = useTheme();
-  const [text, setText] = useState(
+  const [text, setText] = useState<string>( // Specify type for useState
     "Browse the Learning Centre to access hundreds of articles & guides. Prepare documents & contracts in just a few clicks. " +
     "Connect with legal advisors in affordable video sessions. " +
     "With Law On Earth, you'll be able to understand your legal matter and self-act safely and affordably."
   );
-  const [isEditing, setIsEditing] = useState(false);
-  const [hoverIndex, setHoverIndex] = useState(null);
+  const [isEditing, setIsEditing] = useState<boolean>(false); // Specify type for useState
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null); // Specify type for useState
 
-  const handleEditClick = (index) => {
+
+  const handleEditClick = (index: number) => { // Specify type for index parameter
     setIsEditing(true);
     setHoverIndex(index);
   };
