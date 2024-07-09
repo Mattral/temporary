@@ -1,3 +1,4 @@
+"use client"
 // PROJECT IMPORTS
 import Hero from 'sections/landing/Header';
 import Technologies from 'sections/landing/Technologies';
