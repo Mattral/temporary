@@ -27,7 +27,7 @@ const AboutPanel = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
 
-  const handleEditClick = (index) => {
+  const handleEditClick = (index: number) => { // Specify index as number
     setIsEditing(true);
     setHoverIndex(index);
   };
