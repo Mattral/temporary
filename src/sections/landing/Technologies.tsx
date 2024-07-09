@@ -1,7 +1,3 @@
-/*
-
-*/ 
-
 'use client';
 
 // NEXT
@@ -35,7 +31,10 @@ const techAngular = '/assets/images/landing/fa_regular_file.png';
 const techVue = '/assets/images/landing/Book_font_awesome.png';
 const techNextJS = '/assets/images/landing/fa_solid_user-graduate.png';
 
-let value: string = window.location.search;
+let value: string = '';
+if (typeof window !== 'undefined') {
+  value = window.location.search;
+}
 const params = new URLSearchParams(value);
 const ispValue = params.get('isp');
 
@@ -239,10 +238,9 @@ const TechnologiesPage = () => {
             ))}
           </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h3" align="center" sx={{ my: 5 }}>
-            Why Choose Law On Earth?
-          </Typography>
+
+        <Grid item xs={12} sx={{ textAlign: 'center', mt: 5 }}>
+          <Typography variant="h3">Why Choose Law On Earth?</Typography>
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={3} alignItems="center">
@@ -283,7 +281,7 @@ const TechnologiesPage = () => {
                                 '&:hover': { color: 'secondary.lighter' }
                               }}
                             >
-                              Reference
+                              Details
                             </Button>
                           </Grid>
                           {!(tech.free == null) && (
