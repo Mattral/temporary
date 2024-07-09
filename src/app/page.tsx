@@ -10,6 +10,7 @@ import ContactUs from 'sections/landing/ContactUs';
 import SimpleLayout from 'layout/SimpleLayout';
 import Pricing1Page from 'views/price/Pricing1'
 import About from 'sections/landing/About';
+import FooterBlock from 'sections/landing/FB';
 
 
 // ==============================|| LANDING PAGE ||============================== //
@@ -26,6 +27,7 @@ const Landing = () => (
     <Testimonial />
     <Partner />
     <ContactUs />
+    <FooterBlock/>
   </SimpleLayout>
 );
 
