@@ -1,4 +1,3 @@
-"use client"
 // MATERIAL - UI
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -25,7 +24,7 @@ const AboutPanel = () => {
   const [text2, setText2] = useState(initialText2);
   const [text3, setText3] = useState(initialText3);
   const [isEditing, setIsEditing] = useState(false);
-  const [hoverIndex, setHoverIndex] = useState(null);
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null); // Specify hoverIndex as number or null
 
   const handleEditClick = (index: number) => { // Specify index as number
     setIsEditing(true);
@@ -34,7 +33,7 @@ const AboutPanel = () => {
 
   const handleSaveClick = () => {
     setIsEditing(false);
-    setHoverIndex(null);
+    setHoverIndex(null); // Reset hoverIndex after saving
     // Here you could also send the updated text to a server if needed
   };
 
@@ -68,7 +67,7 @@ const AboutPanel = () => {
               ) : (
                 <Box
                   onMouseEnter={() => setHoverIndex(1)}
-                  onMouseLeave={() => setHoverIndex(null)}
+                  onMouseLeave={() => setHoverIndex(null)} // Reset hoverIndex when leaving
                   sx={{ position: 'relative' }}
                 >
                   {text1}
@@ -104,7 +103,7 @@ const AboutPanel = () => {
               ) : (
                 <Box
                   onMouseEnter={() => setHoverIndex(2)}
-                  onMouseLeave={() => setHoverIndex(null)}
+                  onMouseLeave={() => setHoverIndex(null)} // Reset hoverIndex when leaving
                   sx={{ position: 'relative' }}
                 >
                   {text2}
@@ -140,7 +139,7 @@ const AboutPanel = () => {
               ) : (
                 <Box
                   onMouseEnter={() => setHoverIndex(3)}
-                  onMouseLeave={() => setHoverIndex(null)}
+                  onMouseLeave={() => setHoverIndex(null)} // Reset hoverIndex when leaving
                   sx={{ position: 'relative' }}
                 >
                   {text3}
