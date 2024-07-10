@@ -28,14 +28,14 @@ const formsTables: NavItemType = {
   children: [
     {
       id: 'validation',
-      title: <FormattedMessage id="forms-validation" />,
+      title: <FormattedMessage id="forms-validate-example" />,
       type: 'item',
       url: '/forms/validation',
       icon: icons.validation
     },
     {
       id: 'wizard',
-      title: <FormattedMessage id="forms-wizard" />,
+      title: <FormattedMessage id="demo-payment-form" />,
       type: 'item',
       url: '/forms/wizard',
       icon: icons.wizard
@@ -74,7 +74,7 @@ const formsTables: NavItemType = {
     },
     {
       id: 'forms-plugins',
-      title: <FormattedMessage id="plugins" />,
+      title: <FormattedMessage id="plugins-demos" />,
       type: 'collapse',
       icon: icons.plugins,
       children: [
@@ -89,12 +89,6 @@ const formsTables: NavItemType = {
           title: <FormattedMessage id="clipboard" />,
           type: 'item',
           url: '/forms/plugins/clipboard'
-        },
-        {
-          id: 're-captcha',
-          title: <FormattedMessage id="re-captcha" />,
-          type: 'item',
-          url: '/forms/plugins/re-captcha'
         },
         {
           id: 'editor',
@@ -112,7 +106,7 @@ const formsTables: NavItemType = {
     },
     {
       id: 'react-tables',
-      title: <FormattedMessage id="react-table" />,
+      title: <FormattedMessage id="Demo-of-tables" />,
       type: 'collapse',
       icon: icons.reactTables,
       children: [
