@@ -134,9 +134,9 @@ const applications: NavItemType = {
         },
         {
           id: 'checkout',
-          title: <FormattedMessage id="Payments and History" />,
+          title: <FormattedMessage id="Statistics and History" />,
           type: 'item',
-          url: '/apps/e-commerce/checkout'
+          url: '/widget/statistics'
         }
       ]
     }

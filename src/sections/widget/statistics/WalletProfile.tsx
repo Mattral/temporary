@@ -119,8 +119,8 @@ const WalletProfile = () => {
                 <Stack direction="row" alignItems="center" spacing={2}>
                   <Avatar alt="Jone Doe" src={avatar} size="lg" />
                   <Stack>
-                    <Typography variant="subtitle1">Able pro</Typography>
-                    <Typography variant="caption">@ableprodevelop</Typography>
+                    <Typography variant="subtitle1">Treasury</Typography>
+                    <Typography variant="caption">@Treasury</Typography>
                   </Stack>
                 </Stack>
 

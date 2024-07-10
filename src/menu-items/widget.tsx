@@ -24,10 +24,10 @@ const widget: NavItemType = {
   type: 'group',
   children: [
     {
-      id: 'statistics',
+      id: 'Cart Items',
       title: <FormattedMessage id="statistics" />,
       type: 'item',
-      url: '/widget/statistics',
+      url: '/apps/e-commerce/checkout',
       icon: icons.chart
     },
     {
