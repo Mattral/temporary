@@ -1,5 +1,4 @@
 import { useState, MouseEvent } from 'react';
-import { useRouter } from 'next/router';
 
 // MATERIAL - UI
 import List from '@mui/material/List';
@@ -14,24 +13,8 @@ import { Clipboard, I24Support, Lock1, Messages1, Profile } from 'iconsax-react'
 
 const SettingTab = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const router = useRouter();
-
   const handleListItemClick = (event: MouseEvent<HTMLDivElement>, index: number) => {
     setSelectedIndex(index);
-
-    // Define your routes here
-    const routes = [
-      '/contact-us', // Support
-      '/apps/profiles/user/password', // Account Settings
-      '/apps/profiles/user/settings', // Privacy Center
-      '/apps/profiles/user/settings', // Feedback
-      '/widget/statistics', // History
-    ];
-
-    // Check if the index is valid
-    if (index < routes.length) {
-      router.push(routes[index]);
-    }
   };
 
   return (
