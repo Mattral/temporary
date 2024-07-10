@@ -1,4 +1,5 @@
 import { useState, MouseEvent } from 'react';
+import { useRouter } from 'next/router';
 
 // MATERIAL - UI
 import List from '@mui/material/List';
@@ -17,8 +18,23 @@ interface Props {
 
 const ProfileTab = ({ handleLogout }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const router = useRouter();
+
   const handleListItemClick = (event: MouseEvent<HTMLDivElement>, index: number) => {
     setSelectedIndex(index);
+
+    // Define your routes here
+    const routes = [
+      '/apps/profiles/user/personal', // Edit Profile
+      '/apps/profiles/user/personal', // View Profile
+      '/social-profile', // Social Profile
+      '/apps/profiles/user/payment', // Billing
+    ];
+
+    // Check if the index is valid and not the logout button
+    if (index < routes.length) {
+      router.push(routes[index]);
+    }
   };
 
   return (
@@ -35,20 +51,19 @@ const ProfileTab = ({ handleLogout }: Props) => {
         </ListItemIcon>
         <ListItemText primary="View Profile" />
       </ListItemButton>
-
-      <ListItemButton selected={selectedIndex === 3} onClick={(event: MouseEvent<HTMLDivElement>) => handleListItemClick(event, 3)}>
+      <ListItemButton selected={selectedIndex === 2} onClick={(event: MouseEvent<HTMLDivElement>) => handleListItemClick(event, 2)}>
         <ListItemIcon>
           <Profile2User variant="Bulk" size={18} />
         </ListItemIcon>
         <ListItemText primary="Social Profile" />
       </ListItemButton>
-      <ListItemButton selected={selectedIndex === 4} onClick={(event: MouseEvent<HTMLDivElement>) => handleListItemClick(event, 4)}>
+      <ListItemButton selected={selectedIndex === 3} onClick={(event: MouseEvent<HTMLDivElement>) => handleListItemClick(event, 3)}>
         <ListItemIcon>
           <Card variant="Bulk" size={18} />
         </ListItemIcon>
         <ListItemText primary="Billing" />
       </ListItemButton>
-      <ListItemButton selected={selectedIndex === 2} onClick={handleLogout}>
+      <ListItemButton selected={selectedIndex === 4} onClick={handleLogout}>
         <ListItemIcon>
           <Logout variant="Bulk" size={18} />
         </ListItemIcon>

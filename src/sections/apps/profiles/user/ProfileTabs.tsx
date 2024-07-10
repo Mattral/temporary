@@ -151,8 +151,8 @@ const ProfileTabs = ({ focusInput }: Props) => {
               onChange={(e: ChangeEvent<HTMLInputElement>) => setSelectedImage(e.target.files?.[0])}
             />
             <Stack spacing={0.5} alignItems="center">
-              <Typography variant="h5">Stebin Ben</Typography>
-              <Typography color="secondary">Full Stack Developer</Typography>
+              <Typography variant="h5">Obi Wan</Typography>
+              <Typography color="secondary">Lawyer & Consultant</Typography>
             </Stack>
             <Stack direction="row" spacing={3} sx={{ '& svg': { fontSize: '1.15rem', cursor: 'pointer' } }}>
               <Google variant="Bold" color={theme.palette.error.main} />
@@ -166,7 +166,7 @@ const ProfileTabs = ({ focusInput }: Props) => {
           <Stack direction="row" justifyContent="space-around" alignItems="center">
             <Stack spacing={0.5} alignItems="center">
               <Typography variant="h5">86</Typography>
-              <Typography color="secondary">Post</Typography>
+              <Typography color="secondary">Cases</Typography>
             </Stack>
             <Divider orientation="vertical" flexItem />
             <Stack spacing={0.5} alignItems="center">
@@ -175,8 +175,8 @@ const ProfileTabs = ({ focusInput }: Props) => {
             </Stack>
             <Divider orientation="vertical" flexItem />
             <Stack spacing={0.5} alignItems="center">
-              <Typography variant="h5">4.5K</Typography>
-              <Typography color="secondary">Members</Typography>
+              <Typography variant="h5">10+</Typography>
+              <Typography color="secondary">Yrs of Exp</Typography>
             </Stack>
           </Stack>
         </Grid>
