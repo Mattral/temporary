@@ -1,3 +1,5 @@
+// This file is the Dashboard's top header noti bar
+
 import { useMemo } from 'react';
 
 // MATERIAL - UI
@@ -7,7 +9,7 @@ import Box from '@mui/material/Box';
 
 // PROJECT IMPORTS
 import Search from './Search';
-import Message from './Message';
+//import Message from './Message';
 import Profile from './Profile';
 import Localization from './Localization';
 import Notification from './Notification';
@@ -41,7 +43,7 @@ const HeaderContent = () => {
       {downLG && <Box sx={{ width: '100%', ml: 1 }} />}
 
       <Notification />
-      <Message />
+      
       {!downLG && <Profile />}
       {downLG && <MobileSection />}
     </>
@@ -49,3 +51,4 @@ const HeaderContent = () => {
 };
 
 export default HeaderContent;
+//<Message /> in line 44

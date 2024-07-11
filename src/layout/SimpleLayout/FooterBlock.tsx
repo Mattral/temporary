@@ -65,7 +65,7 @@ const FooterBlock = ({ isFull }: showProps) => {
                   <Grid item xs={12}>
                     <Typography variant="subtitle1" sx={{ fontWeight: 400 }}>
                     A way to connect the world and make legal services accessible to everyone. 
-                    The Law On Earth portal contains 100's of legal documents and guidance sheets 
+                    The Law On Earth portal contains 100&apos;s of legal documents and guidance sheets 
                     so that clients can self-service yet also receive advice packages depending on their subscription level.
                     </Typography>
                   </Grid>

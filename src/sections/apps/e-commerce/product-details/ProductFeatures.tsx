@@ -8,18 +8,18 @@ function ProductFeatures() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={3}>
-        <Typography color="textSecondary">Band :</Typography>
+        <Typography color="textSecondary">Country :</Typography>
       </Grid>
       <Grid item xs={9}>
-        <Typography>Smart Band</Typography>
+        <Typography>UK</Typography>
       </Grid>
       <Grid item xs={3}>
         <Typography color="textSecondary" noWrap>
-          Compatible Devices :
+          Domain :
         </Typography>
       </Grid>
       <Grid item xs={9}>
-        <Typography>Smartphones</Typography>
+        <Typography>Legal / Insurance</Typography>
       </Grid>
       <Grid item xs={3}>
         <Typography color="textSecondary" noWrap>
@@ -27,30 +27,25 @@ function ProductFeatures() {
         </Typography>
       </Grid>
       <Grid item xs={9}>
-        <Typography>Unisex</Typography>
+        <Typography>Finance</Typography>
       </Grid>
       <Grid item xs={3}>
         <Typography color="textSecondary" noWrap>
-          Lifestyle :
+          Expertise :
         </Typography>
       </Grid>
       <Grid item xs={9}>
-        <Typography noWrap>Fitness | Indoor | Sports | Swimming | Outdoor</Typography>
+        <Typography noWrap>HR | IR | Health | Property</Typography>
       </Grid>
       <Grid item xs={3}>
         <Typography color="textSecondary" noWrap>
-          Basic Features :
+          Certifications :
         </Typography>
       </Grid>
       <Grid item xs={9}>
-        <Typography noWrap>Calendar | Date & Time | Timer/Stop Watch</Typography>
+        <Typography noWrap>MSc | Bsc | Diploma</Typography>
       </Grid>
-      <Grid item xs={3}>
-        <Typography color="textSecondary">Health Tracker :</Typography>
-      </Grid>
-      <Grid item xs={9}>
-        <Typography> Heart Rate | Exercise Tracker</Typography>
-      </Grid>
+      
     </Grid>
   );
 }

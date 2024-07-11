@@ -21,6 +21,13 @@ import MainCard from 'components/MainCard';
 const plans = [
   {
     active: false,
+    title: 'Starter',
+    description: 'Free',
+    price: 0,
+    permission: [0, 1, 2, 3]
+  },
+  {
+    active: false,
     title: 'Basic',
     description: '03 Services',
     price: 69,
@@ -43,12 +50,12 @@ const plans = [
 ];
 
 const planList = [
-  'Access to our catalogue of 150+ templates', // 0
-  'Download in Microsoft Words Format', // 1
-  'Access to over 300 articles, booklets, infographics and so on', // 2
-  'Geotagged Contents', // 3
-  'Discounted Video Sessions', // 4
-  'Access to encrypted securely stored video recordings of advice sessions', // 5
+  'Access to our catalogue of 150+ document templates', // 0
+  'Download in Microsoft Word format (Pay Per Document)', // 1
+  'Access to over 300 articles, booklets, infographics and checklists', // 2
+  'Geotagged Content', // 3
+  'Discounted video sessions', // 4
+  'Access encrypted, securely-stored video recordings of advice sessions', // 5
   '?', // 6
   '?' // 7
 ];
@@ -73,13 +80,16 @@ const Pricing1Page = () => {
     fontWeight: 700,
     lineHeight: 1
   };
+
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} sx={{ pt: 6 }}> {/* Add padding top here */}
       <Grid item xs={12}>
-        <Stack spacing={2} direction={{ xs: 'column', md: 'row' }} justifyContent="space-between">
-          <Stack spacing={0}>
+        <Stack spacing={2} direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" sx={{ mb: 4 }}> {/* Add bottom margin */}
+          <Stack spacing={1} sx={{ mt: 2, textAlign: 'center' }}> {/* Add spacing and text alignment */}
             <Typography variant="h3">Choose what works for you!</Typography>
-            <Typography color="textSecondary">access to unlimited documents. Save over 40% when you subscribe for 6 months. Current Pricing is listed in AUD </Typography>
+            <Typography color="textSecondary">
+              Access to unlimited documents. Save over 40% when you subscribe for 6 months. Current Pricing is listed in AUD.
+            </Typography>
           </Stack>
           <Stack direction="row" spacing={1.5} alignItems="center">
             <Typography variant="subtitle1" color={timePeriod ? 'textSecondary' : 'textPrimary'}>
@@ -94,7 +104,7 @@ const Pricing1Page = () => {
       </Grid>
       <Grid item container spacing={3} xs={12} alignItems="center">
         {plans.map((plan, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={3} key={index}> {/* Adjusted the grid size */}
             <MainCard>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -120,7 +130,7 @@ const Pricing1Page = () => {
                           )}
                           {!timePeriod && (
                             <Typography variant="h2" sx={price}>
-                              ${plan.price * 12 - 99}
+                              ${plan.price * 12}
                             </Typography>
                           )}
                           <Typography variant="h6" color="textSecondary">
@@ -130,7 +140,7 @@ const Pricing1Page = () => {
                       </Grid>
                       <Grid item xs={12}>
                         <Button color={plan.active ? 'primary' : 'secondary'} variant={plan.active ? 'contained' : 'outlined'} fullWidth>
-                          Order Now
+                          {plan.price === 0 ? 'Get Started' : 'Order Now'}
                         </Button>
                       </Grid>
                     </Grid>

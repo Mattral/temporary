@@ -24,21 +24,21 @@ const featureDocumentation = '/assets/images/landing/feature-documentation.png';
 const Technologies = [
   {
     icon: featureFigma,
-    title: 'Figma Design System',
-    description: 'Check the live preview of LoE Template. Document Generation Functions.',
-    preview: 'https://links.codedthemes.com/mQZrX'
+    title: 'Consult with Legal Advisor',
+    description: 'Check the live preview of LoE Video Consultations. Schedule now!.',
+    preview: '#'
   },
   {
     icon: featureComponents,
-    title: 'Explore Components',
+    title: 'Explore Legal Contents',
     description: 'Access all components of LoE in one place to make your work easier.',
     preview: '/components-overview/buttons'
   },
   {
     icon: featureDocumentation,
-    title: 'Documentation',
+    title: 'Document Generation',
     description: 'Find solutions and navigate through our Service with ease.',
-    preview: 'https://phoenixcoded.gitbook.io/able-pro/v/nextjs'
+    preview: '#'
   }
 ];
 

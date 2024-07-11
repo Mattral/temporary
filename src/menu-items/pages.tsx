@@ -245,16 +245,6 @@ const pages: NavItemType = {
           ),
           type: 'item',
           url: '/price/price1'
-        },
-        {
-          id: 'price2',
-          title: (
-            <>
-              <FormattedMessage id="price" /> 2
-            </>
-          ),
-          type: 'item',
-          url: '/price/price2'
         }
       ]
     },

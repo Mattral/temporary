@@ -8,37 +8,41 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-//import Links from '@mui/material/Link';
-import Rating from '@mui/material/Rating';
-//import Tooltip from '@mui/material/Tooltip';
+import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
-//import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import Rating from '@mui/material/Rating';
 
 // THIRD - PARTY
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 // ASSETS
 import AnimateButton from 'components/@extended/AnimateButton';
-/*
-const techBootstrap = '/assets/images/landing/tech-bootstrap.svg';
-const techReact = '/assets/images/landing/tech-react.svg';
-const techCodeigniter = '/assets/images/landing/tech-codeigniter.svg';
-const techNet = '/assets/images/landing/tech-net.svg';
-const techFigma = '/assets/images/landing/tech-figma.svg';
-const techVue = 'assets/images/landing/tech-vuetify.svg';
-const tehAngular = 'assets/images/landing/tech-angular.svg';
-const techNextJS = 'assets/images/landing/tech-nextjs.svg';
-*/
 
 // ==============================|| LANDING - HeaderPage ||============================== //
 
 const HeaderPage = () => {
   const theme = useTheme();
+  const [text, setText] = useState<string>( // Specify type for useState
+    "Browse the Learning Centre to access hundreds of articles & guides. Prepare documents & contracts in just a few clicks. " +
+    "Connect with legal advisors in affordable video sessions. " +
+    "With Law On Earth, you'll be able to understand your legal matter and self-act safely and affordably."
+  );
+  const [isEditing, setIsEditing] = useState<boolean>(false); // Specify type for useState
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null); // Specify type for useState
 
-  //let value: string = window.location.search;
-  //const params = new URLSearchParams(value);
-  //sconst ispValue = params.get('isp');
+
+  const handleEditClick = (index: number) => { // Specify type for index parameter
+    setIsEditing(true);
+    setHoverIndex(index);
+  };
+
+  const handleSaveClick = () => {
+    setIsEditing(false);
+    setHoverIndex(null);
+    // Here you could also send the updated text to a server if needed
+  };
 
   return (
     <Container sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
@@ -93,15 +97,46 @@ const HeaderPage = () => {
                     delay: 0.2
                   }}
                 >
-                  <Typography
-                    variant="h6"
-                    component="div"
-                    sx={{ fontSize: { xs: '0.875rem', md: '1rem' }, fontWeight: 400, lineHeight: { xs: 1.4, md: 1.4 } }}
-                  >
-                    Browse the Learning Centre to access hundreds of articles & guides. Prepare documents & contracts in just a few clicks. 
-                    Connect with legal advisors in affordable video sessions. 
-                    With Law On Earth, you'll be able to understand your legal matter and self-act safely and affordably.
-                  </Typography>
+                  {isEditing && hoverIndex === 0 ? (
+                    <TextField
+                      fullWidth
+                      multiline
+                      minRows={4}
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                      variant="outlined"
+                    />
+                  ) : (
+                    <Box
+                      onMouseEnter={() => setHoverIndex(0)}
+                      onMouseLeave={() => setHoverIndex(null)}
+                      sx={{ position: 'relative' }}
+                    >
+                      <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ fontSize: { xs: '0.875rem', md: '1rem' }, fontWeight: 400, lineHeight: { xs: 1.4, md: 1.4 } }}
+                      >
+                        {text}
+                      </Typography>
+                      {hoverIndex === 0 && !isEditing && (
+                        <Button
+                          variant="outlined"
+                          color="secondary"
+                          onClick={() => handleEditClick(0)}
+                          sx={{
+                            position: 'absolute',
+                            top: 0,
+                            right: 0,
+                            transform: 'translateY(-100%)',
+                            marginBottom: '8px',
+                          }}
+                        >
+                          Edit
+                        </Button>
+                      )}
+                    </Box>
+                  )}
                 </motion.div>
               </Grid>
             </Grid>
@@ -181,6 +216,28 @@ const HeaderPage = () => {
                 </Grid>
               </motion.div>
             </Grid>
+            {isEditing && (
+              <Grid item xs={12}>
+                <motion.div
+                  initial={{ opacity: 0, translateY: 550 }}
+                  animate={{ opacity: 1, translateY: 0 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 150,
+                    damping: 30,
+                    delay: 0.6
+                  }}
+                >
+                  <Grid container spacing={2} justifyContent="center">
+                    <Grid item>
+                      <Button variant="contained" color="primary" onClick={handleSaveClick}>
+                        Save
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </motion.div>
+              </Grid>
+            )}
           </Grid>
         </Grid>
       </Grid>
@@ -203,37 +260,5 @@ const HeaderPage = () => {
     </Container>
   );
 };
+
 export default HeaderPage;
-
-/*
-import { AboutPanelInterface } from "./LandingPageData.interface";
-
-export default function AboutPanel(props: AboutPanelInterface) {
-  return (
-    <section className="p-5" id={props.panelId ? props.panelId : ""}>
-      <h2 className="text-center mb-5">{props.title}</h2>
-
-      <section className="container">
-        <section className="row">
-          <div className="col-md-6 overflow-hidden">
-            <img
-              alt={props.image}
-              src={props.image}
-              className="img-fluid d-block"
-            />
-          </div>
-          <div
-            className="col-md-6 p-3 overflow-hidden"
-            style={{
-              backgroundColor: "rgba(var(--bs-secondary-rgb), 0.1)",
-              whiteSpace: "pre-line",
-            }}
-          >
-            {props.content}
-          </div>
-        </section>
-      </section>
-    </section>
-  );
-}
-*/

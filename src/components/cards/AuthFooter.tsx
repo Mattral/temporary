@@ -20,15 +20,15 @@ const AuthFooter = () => {
         textAlign={matchDownSM ? 'center' : 'inherit'}
       >
         <Typography variant="subtitle2" color="secondary" component="span">
-          Able Pro ♥ crafted by Team{' '}
+          LoE ♥ crafted by Team{' '}
           <Typography
             component={Link}
             variant="subtitle2"
-            href="https://themeforest.net/user/phoenixcoded/portfolio"
+            href=""
             target="_blank"
             underline="hover"
           >
-            Phoenixcoded
+            OmdenaLoE
           </Typography>
         </Typography>
 
@@ -37,7 +37,7 @@ const AuthFooter = () => {
             variant="subtitle2"
             color="secondary"
             component={Link}
-            href="https://phoenixcoded.gitbook.io/able-pro/v/nextjs"
+            href="#"
             target="_blank"
             underline="hover"
           >
@@ -47,7 +47,7 @@ const AuthFooter = () => {
             variant="subtitle2"
             color="secondary"
             component={Link}
-            href="https://phoenixcoded.authordesk.app/"
+            href="#"
             target="_blank"
             underline="hover"
           >
@@ -57,7 +57,7 @@ const AuthFooter = () => {
             variant="subtitle2"
             color="secondary"
             component={Link}
-            href="https://themeforest.net/user/phoenixcoded#contact"
+            href="#"
             target="_blank"
             underline="hover"
           >

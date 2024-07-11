@@ -1,11 +1,7 @@
 'use client';
 
 import { useState, cloneElement, ReactElement } from 'react';
-
-// NEXT
 import Link from 'next/link';
-
-// MATERIAL - UI
 import { alpha, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import AppBar from '@mui/material/AppBar';
@@ -23,16 +19,10 @@ import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-
-// PROJECT IMPORTS
 import IconButton from 'components/@extended/IconButton';
 import AnimateButton from 'components/@extended/AnimateButton';
 import Logo from 'components/logo';
-
-// ASSETS
-import { DocumentDownload, ExportSquare, HambergerMenu, Minus } from 'iconsax-react';
-
-// TYPES
+import { ExportSquare, HambergerMenu, Minus } from 'iconsax-react';
 import { ThemeDirection } from 'types/config';
 
 interface ElevationScrollProps {
@@ -40,7 +30,6 @@ interface ElevationScrollProps {
   window?: Window | Node;
 }
 
-// elevation scroll
 function ElevationScroll({ children, window }: ElevationScrollProps) {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -55,15 +44,11 @@ function ElevationScroll({ children, window }: ElevationScrollProps) {
   });
 }
 
-// ==============================|| COMPONENTS - APP BAR ||============================== //
-
 const Header = () => {
   const theme = useTheme();
-
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerToggle, setDrawerToggle] = useState<boolean>(false);
 
-  /** Method called on multiple components with different event types */
   const drawerToggler = (open: boolean) => (event: any) => {
     if (event.type! === 'keydown' && (event.key! === 'Tab' || event.key! === 'Shift')) {
       return;
@@ -71,16 +56,20 @@ const Header = () => {
     setDrawerToggle(open);
   };
 
-  let url;
-  let value: string = window.location.search;
-  const params = new URLSearchParams(value);
-  const ispValue = params.get('isp');
+  // @ts-ignore
+  let url = '';
+  if (typeof window !== 'undefined') {
+    let value: string = window.location.search;
+    const params = new URLSearchParams(value);
+    const ispValue = params.get('isp');
 
-  if (ispValue !== null && parseInt(ispValue) === 1) {
-    url = 'https://1.envato.market/OrJ5nn';
-  } else {
-    url = 'https://1.envato.market/zNkqj6';
+    if (ispValue !== null && parseInt(ispValue) === 1) {
+      url = 'https://1.envato.market/OrJ5nn';
+    } else {
+      url = 'https://1.envato.market/zNkqj6';
+    }
   }
+
 
   const linksSx = {
     textDecoration: 'none'
@@ -123,50 +112,53 @@ const Header = () => {
                 sx={{ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 }}
                 color="secondary.main"
                 component={Link}
-                href="/login"
+                href="#"
                 target="_blank"
                 underline="none"
               >
-                Dashboard
+                About
               </Links>
               <Links className="header-link" color="secondary.main" component={Link} href="/components-overview/buttons" underline="none">
-                Components
+                Services
               </Links>
               <Links
                 className="header-link"
                 color="secondary.main"
-                href="https://phoenixcoded.gitbook.io/able-pro/v/nextjs"
+                href="#"
                 target="_blank"
                 underline="none"
               >
-                Documentation
+                Pricing
               </Links>
-              <Links href="https://links.codedthemes.com/vYUWM" target="_blank" underline="none">
-                <IconButton
-                  size="large"
-                  shape="rounded"
-                  color="secondary"
-                  sx={{
-                    bgcolor: 'secondary.light',
-                    color: 'secondary.darker',
-                    '&:hover': { color: 'secondary.lighter', bgcolor: 'secondary.darker' }
-                  }}
-                >
-                  <DocumentDownload />
-                </IconButton>
-              </Links>
+
               <Box sx={{ display: 'inline-block' }}>
                 <AnimateButton>
                   <Button
                     component={Links}
-                    href={url}
+                    href="/login"
+                    disableElevation
+                    startIcon={<ExportSquare />}
+                    color="info"
+                    size="large"
+                    variant="contained"
+                  >
+                    Login
+                  </Button>
+                </AnimateButton>
+              </Box>
+              
+              <Box sx={{ display: 'inline-block' }}>
+                <AnimateButton>
+                  <Button
+                    component={Links}
+                    href="/register"
                     disableElevation
                     startIcon={<ExportSquare />}
                     color="success"
                     size="large"
                     variant="contained"
                   >
-                    Purchase Now
+                    Register
                   </Button>
                 </AnimateButton>
               </Box>
@@ -213,7 +205,7 @@ const Header = () => {
                         <ListItemText primary="All Components" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
-                    <Links sx={linksSx} href="https://codedthemes.com/?s=able+pro" target="_blank">
+                    <Links sx={linksSx} href="#" target="_blank">
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
@@ -221,7 +213,7 @@ const Header = () => {
                         <ListItemText primary="Free Version" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
-                    <Links sx={linksSx} href="https://phoenixcoded.gitbook.io/able-pro/v/nextjs" target="_blank">
+                    <Links sx={linksSx} href="#" target="_blank">
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
@@ -229,7 +221,7 @@ const Header = () => {
                         <ListItemText primary="Documentation" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
-                    <Links sx={linksSx} href="https://phoenixcoded.authordesk.app/" target="_blank">
+                    <Links sx={linksSx} href="#" target="_blank">
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
@@ -239,7 +231,7 @@ const Header = () => {
                     </Links>
                     <Links
                       sx={linksSx}
-                      href="https://1.envato.market/c/1289604/275988/4415?subId1=phoenixcoded&u=https%3A%2F%2Fthemeforest.net%2Fitem%2Fable-pro-responsive-bootstrap-4-admin-template%2F19300403"
+                      href="#"
                       target="_blank"
                     >
                       <ListItemButton component="span">

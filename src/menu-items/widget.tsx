@@ -24,25 +24,25 @@ const widget: NavItemType = {
   type: 'group',
   children: [
     {
-      id: 'statistics',
-      title: <FormattedMessage id="statistics" />,
+      id: 'Cart Items',
+      title: <FormattedMessage id="Cart Items" />,
       type: 'item',
-      url: '/widget/statistics',
-      icon: icons.statistics
+      url: '/apps/e-commerce/checkout',
+      icon: icons.chart
     },
     {
       id: 'data',
-      title: <FormattedMessage id="data" />,
+      title: <FormattedMessage id="Probono Data" />,
       type: 'item',
       url: '/widget/data',
       icon: icons.data
     },
     {
-      id: 'chart',
-      title: <FormattedMessage id="chart" />,
+      id: 'Genarate Legal Document',
+      title: <FormattedMessage id="Genarate Legal Document" />,
       type: 'item',
       url: '/widget/chart',
-      icon: icons.chart
+      icon: icons.statistics
     }
   ]
 };

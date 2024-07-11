@@ -49,8 +49,8 @@ const AssignUsers = () => {
                 <Profile variant="Bold" />
               </Avatar>
               <Stack>
-                <Typography variant="subtitle1">Able pro</Typography>
-                <Typography variant="caption">@ableprodevelop</Typography>
+                <Typography variant="subtitle1">Treasury</Typography>
+                <Typography variant="caption">@Treasury</Typography>
               </Stack>
             </Stack>
             <IconButton

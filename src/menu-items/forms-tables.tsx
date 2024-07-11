@@ -28,14 +28,14 @@ const formsTables: NavItemType = {
   children: [
     {
       id: 'validation',
-      title: <FormattedMessage id="forms-validation" />,
+      title: <FormattedMessage id="forms-validate-example" />,
       type: 'item',
       url: '/forms/validation',
       icon: icons.validation
     },
     {
       id: 'wizard',
-      title: <FormattedMessage id="forms-wizard" />,
+      title: <FormattedMessage id="demo-payment-form" />,
       type: 'item',
       url: '/forms/wizard',
       icon: icons.wizard
@@ -74,7 +74,7 @@ const formsTables: NavItemType = {
     },
     {
       id: 'forms-plugins',
-      title: <FormattedMessage id="plugins" />,
+      title: <FormattedMessage id="plugins-demos" />,
       type: 'collapse',
       icon: icons.plugins,
       children: [
@@ -89,12 +89,6 @@ const formsTables: NavItemType = {
           title: <FormattedMessage id="clipboard" />,
           type: 'item',
           url: '/forms/plugins/clipboard'
-        },
-        {
-          id: 're-captcha',
-          title: <FormattedMessage id="re-captcha" />,
-          type: 'item',
-          url: '/forms/plugins/re-captcha'
         },
         {
           id: 'editor',
@@ -112,7 +106,7 @@ const formsTables: NavItemType = {
     },
     {
       id: 'react-tables',
-      title: <FormattedMessage id="react-table" />,
+      title: <FormattedMessage id="Demo-of-tables" />,
       type: 'collapse',
       icon: icons.reactTables,
       children: [
@@ -201,57 +195,8 @@ const formsTables: NavItemType = {
           url: '/tables/react-table/empty'
         }
       ]
-    },
-    {
-      id: 'mui-tables',
-      title: <FormattedMessage id="mui-table" />,
-      type: 'collapse',
-      icon: icons.muiTables,
-      children: [
-        {
-          id: 'mui-table',
-          title: <FormattedMessage id="basic" />,
-          type: 'item',
-          url: '/tables/mui-table/basic'
-        },
-        {
-          id: 'mui-dense',
-          title: <FormattedMessage id="dense" />,
-          type: 'item',
-          url: '/tables/mui-table/dense'
-        },
-        {
-          id: 'mui-enhanced',
-          title: <FormattedMessage id="enhanced" />,
-          type: 'item',
-          url: '/tables/mui-table/enhanced'
-        },
-        {
-          id: 'mui-data-table',
-          title: <FormattedMessage id="datatable" />,
-          type: 'item',
-          url: '/tables/mui-table/datatable'
-        },
-        {
-          id: 'mui-custom',
-          title: <FormattedMessage id="custom" />,
-          type: 'item',
-          url: '/tables/mui-table/custom'
-        },
-        {
-          id: 'mui-fixed-header',
-          title: <FormattedMessage id="fixed-header" />,
-          type: 'item',
-          url: '/tables/mui-table/fixed-header'
-        },
-        {
-          id: 'mui-collapse',
-          title: <FormattedMessage id="collapse" />,
-          type: 'item',
-          url: '/tables/mui-table/collapse'
-        }
-      ]
     }
+
   ]
 };
 

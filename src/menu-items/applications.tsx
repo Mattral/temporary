@@ -2,7 +2,7 @@
 import { FormattedMessage } from 'react-intl';
 
 // ASSETS
-import { KyberNetwork, Messages2, Calendar1, Kanban, Profile2User, Bill, UserSquare, ShoppingBag } from 'iconsax-react';
+import { KyberNetwork, Messages2, Calendar1, Profile2User, Bill, UserSquare, ShoppingBag } from 'iconsax-react';
 
 // TYPE
 import { NavItemType } from 'types/menu';
@@ -12,7 +12,6 @@ const icons = {
   applications: KyberNetwork,
   chat: Messages2,
   calendar: Calendar1,
-  kanban: Kanban,
   customer: Profile2User,
   invoice: Bill,
   profile: UserSquare,
@@ -27,6 +26,7 @@ const applications: NavItemType = {
   icon: icons.applications,
   type: 'group',
   children: [
+    
     {
       id: 'chat',
       title: <FormattedMessage id="chat" />,
@@ -42,6 +42,7 @@ const applications: NavItemType = {
       url: '/apps/calendar',
       icon: icons.calendar
     },
+    /*
     {
       id: 'kanban',
       title: <FormattedMessage id="kanban" />,
@@ -50,9 +51,10 @@ const applications: NavItemType = {
       url: '/apps/kanban/board',
       breadcrumbs: false
     },
+    */
     {
       id: 'customer',
-      title: <FormattedMessage id="customer" />,
+      title: <FormattedMessage id="Advisors" />,
       type: 'collapse',
       icon: icons.customer,
       children: [
@@ -70,49 +72,11 @@ const applications: NavItemType = {
         }
       ]
     },
-    {
-      id: 'invoice',
-      title: <FormattedMessage id="invoice" />,
-      type: 'collapse',
-      icon: icons.invoice,
-      children: [
-        {
-          id: 'invoice-dashboard',
-          title: <FormattedMessage id="dashboard" />,
-          type: 'item',
-          url: '/apps/invoice/dashboard',
-          breadcrumbs: false
-        },
-        {
-          id: 'invoice-create',
-          title: <FormattedMessage id="create" />,
-          type: 'item',
-          url: '/apps/invoice/create',
-          breadcrumbs: false
-        },
-        {
-          id: 'invoice-details',
-          title: <FormattedMessage id="details" />,
-          type: 'item',
-          url: '/apps/invoice/details/1',
-          breadcrumbs: false
-        },
-        {
-          id: 'invoice-list',
-          title: <FormattedMessage id="list" />,
-          type: 'item',
-          url: '/apps/invoice/list',
-          breadcrumbs: false
-        },
-        {
-          id: 'invoice-edit',
-          title: <FormattedMessage id="edit" />,
-          type: 'item',
-          url: '/apps/invoice/edit/1',
-          breadcrumbs: false
-        }
-      ]
-    },
+    /*
+
+    */
+
+    /*
     {
       id: 'profile',
       title: <FormattedMessage id="profile" />,
@@ -135,43 +99,44 @@ const applications: NavItemType = {
         }
       ]
     },
+    */
 
     {
       id: 'e-commerce',
-      title: <FormattedMessage id="e-commerce" />,
+      title: <FormattedMessage id="Video Call" />,
       type: 'collapse',
       icon: icons.ecommerce,
       children: [
         {
-          id: 'products',
-          title: <FormattedMessage id="products" />,
+          id: 'PersonalRoom',
+          title: <FormattedMessage id="Personal Room" />,
           type: 'item',
-          url: '/apps/e-commerce/products'
+          url: '/apps/e-commerce/PersonalRoom'
         },
         {
-          id: 'product-details',
-          title: <FormattedMessage id="product-details" />,
+          id: 'MeetingRoom',
+          title: <FormattedMessage id="Meeting Room" />,
           type: 'item',
-          url: '/apps/e-commerce/product-details/1',
+          url: '/apps/e-commerce/MeetingRoom',
           breadcrumbs: false
         },
         {
-          id: 'product-list',
-          title: <FormattedMessage id="product-list" />,
+          id: 'Schedule',
+          title: <FormattedMessage id="Schedule" />,
           type: 'item',
-          url: '/apps/e-commerce/product-list'
+          url: '/apps/e-commerce/Schedule'
         },
         {
-          id: 'add-new-product',
-          title: <FormattedMessage id="add-new-product" />,
+          id: 'add-new-schedule',
+          title: <FormattedMessage id="add-new-schedule" />,
           type: 'item',
-          url: '/apps/e-commerce/add-new-product'
+          url: '/apps/e-commerce/add-new-schedule'
         },
         {
           id: 'checkout',
-          title: <FormattedMessage id="checkout" />,
+          title: <FormattedMessage id="Statistics and History" />,
           type: 'item',
-          url: '/apps/e-commerce/checkout'
+          url: '/widget/statistics'
         }
       ]
     }

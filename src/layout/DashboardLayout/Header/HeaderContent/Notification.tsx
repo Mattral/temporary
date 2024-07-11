@@ -145,9 +145,9 @@ const NotificationPage = () => {
                           <Typography variant="h6">
                             It&apos;s{' '}
                             <Typography component="span" variant="subtitle1">
-                              Cristina danny&apos;s
+                              Thursday&apos;s
                             </Typography>{' '}
-                            birthday today.
+                            promo today.
                           </Typography>
                         }
                         secondary="2 min ago"
@@ -169,9 +169,9 @@ const NotificationPage = () => {
                         primary={
                           <Typography variant="h6">
                             <Typography component="span" variant="subtitle1">
-                              Aida Burg
+                              Legal Advisor
                             </Typography>{' '}
-                            commented your post.
+                            Re-scheduled your meeting date.
                           </Typography>
                         }
                         secondary="5 August"
@@ -215,7 +215,7 @@ const NotificationPage = () => {
                         primary={
                           <Typography variant="h6">
                             <Typography component="span" variant="subtitle1">
-                              Cristina Danny
+                              Andrew
                             </Typography>{' '}
                             invited to join{' '}
                             <Typography component="span" variant="subtitle1">

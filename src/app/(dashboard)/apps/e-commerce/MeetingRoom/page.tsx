@@ -1,3 +1,30 @@
+// src/app/(dashboard)/apps/e-commerce/product-details/[id]/page.tsx
+import Products from 'views/apps/Products';
+import { ProductDetails } from 'views/apps/ProductDetails';
+
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+export default function Page({ params }: Props) {
+  const { id } = params;
+  <ProductDetails id={id} />
+
+  return <Products />;
+}
+
+export async function generateStaticParams() {
+  const response = [1, 2, 3, 5];
+
+  return response.map((prodId: number) => ({
+    id: prodId.toString()
+  }));
+}
+
+
+/*
 // import { Products } from 'types/e-commerce';
 // import axios from 'utils/axios';
 
@@ -34,3 +61,4 @@ export async function generateStaticParams() {
     id: prodId.toString()
   }));
 }
+*/

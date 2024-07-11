@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductList = () => {
+const TP = () => {
   const now = new Date();
 
   const time = now.toLocaleTimeString("en-US", {
@@ -60,7 +60,7 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default TP;
 
 
 

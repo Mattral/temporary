@@ -6,8 +6,8 @@ import './globals.css';
 import ProviderWrapper from './ProviderWrapper';
 
 export const metadata: Metadata = {
-  title: 'Able Pro Material UI React Dashboard Template',
-  description: 'Able Pro Material UI React Dashboard Template'
+  title: 'Law On Earth',
+  description: 'Law On Earth'
 };
 
 export default function RootLayout({ children }: { children: React.ReactElement }) {
