@@ -18,12 +18,13 @@ import FooterBlock from 'sections/landing/FB';
 const Landing = () => (
   <SimpleLayout>
     <Hero />
-    <About/>
+    <Apps />
     <Technologies />
     <Combo />
     
-    <Apps />
+    
     <Pricing1Page />
+    <About/>
     
     <Partner />
     

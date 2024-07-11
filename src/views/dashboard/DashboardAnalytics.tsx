@@ -1,5 +1,4 @@
 "use client"
-"use client"
 // PROJECT IMPORTS
 import Hero from 'sections/landing/Header';
 import Technologies from 'sections/landing/Technologies';
@@ -19,12 +18,13 @@ import FooterBlock from 'sections/landing/FB';
 const Landing = () => (
   <SimpleLayout>
     <Hero />
-    <About/>
+    <Apps />
     <Technologies />
     <Combo />
     
-    <Apps />
+    
     <Pricing1Page />
+    <About/>
     
     <Partner />
     
@@ -33,4 +33,3 @@ const Landing = () => (
 );
 
 export default Landing;
-
