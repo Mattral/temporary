@@ -49,6 +49,7 @@ const AppsPage = () => {
   const [image, setImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  // @ts-ignore
   const handleChange = (index: number) => {
     setSelectedTechIndex(index);
   };
