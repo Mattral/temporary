@@ -146,7 +146,7 @@ const PartnerPage = () => {
             {clients.map((item) => (
               <Grid item key={item.id} onMouseEnter={() => setHoverIndex(item.id)} onMouseLeave={() => setHoverIndex(null)}>
                 <FadeInWhenVisible>
-                  <Box sx={{ position: 'relative', width: 150, height: 150 }}>
+                  <Box sx={{ position: 'relative', width: 200, height: 100 }}>
                     <CardMedia component="img" image={item.image} sx={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                     {hoverIndex === item.id && (
                       <>
