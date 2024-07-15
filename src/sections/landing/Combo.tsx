@@ -4,6 +4,141 @@
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+
+// THIRD - PARTY
+import { motion } from 'framer-motion';
+
+// PROJECT IMPORTS
+import FadeInWhenVisible from './Animation';
+import MainCard from 'components/MainCard';
+import EditableTextSection from './EditableTextSection';
+import EditableImageSection from './EditableImageSection';
+
+// ASSETS
+const featureFigma = '/assets/images/landing/feature-figma.png';
+const featureComponents = '/assets/images/landing/feature-components.png';
+const featureDocumentation = '/assets/images/landing/feature-documentation.png';
+
+const Technologies = [
+  {
+    icon: featureFigma,
+    title: 'Consult with Legal Advisor',
+    description: 'Check the live preview of LoE Video Consultations. Schedule now!.',
+    preview: '#'
+  },
+  {
+    icon: featureComponents,
+    title: 'Explore Legal Contents',
+    description: 'Access all components of LoE in one place to make your work easier.',
+    preview: '/components-overview/buttons'
+  },
+  {
+    icon: featureDocumentation,
+    title: 'Document Generation',
+    description: 'Find solutions and navigate through our Service with ease.',
+    preview: '#'
+  }
+];
+
+// ==============================|| LANDING - ComboPage ||============================== //
+
+const ComboPage = () => {
+  return (
+    <Container>
+      <Grid container spacing={3} alignItems="center" justifyContent="center" sx={{ mt: { md: 15, xs: 2.5 }, mb: { md: 10, xs: 2.5 } }}>
+        <Grid item xs={12}>
+          <Grid container spacing={2} justifyContent="center" sx={{ textAlign: 'center', marginBottom: 3 }}>
+            <Grid item xs={12}>
+              <motion.div
+                initial={{ opacity: 0, translateY: 550 }}
+                animate={{ opacity: 1, translateY: 0 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 30,
+                  delay: 0.2
+                }}
+              >
+                <EditableTextSection initialText="Complete Combo" variant="h2" />
+              </motion.div>
+            </Grid>
+            <Grid item xs={12} md={7}>
+              <motion.div
+                initial={{ opacity: 0, translateY: 550 }}
+                animate={{ opacity: 1, translateY: 0 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 30,
+                  delay: 0.4
+                }}
+              >
+                <EditableTextSection initialText="We cater to the needs of both Advisors and Clients, whether they are professional or students." variant="body1" />
+              </motion.div>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container spacing={3} alignItems="center">
+            {Technologies.map((tech, index) => (
+              <Grid item xs={12} md={6} lg={4} key={index}>
+                <FadeInWhenVisible>
+                  <MainCard>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12}>
+                        <EditableTextSection initialText={tech.title} variant="h5" />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <EditableTextSection initialText={tech.description} variant="body1" />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <EditableImageSection initialImage={tech.icon} />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          size="large"
+                          component={Link}
+                          href={tech.preview}
+                          target="_blank"
+                          sx={{
+                            fontWeight: 500,
+                            bgcolor: 'secondary.light',
+                            color: 'secondary.darker',
+                            '&:hover': { color: 'secondary.lighter' }
+                          }}
+                        >
+                          Reference
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </MainCard>
+                </FadeInWhenVisible>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
+    </Container>
+  );
+};
+
+export default ComboPage;
+
+
+
+
+
+/*
+'use client';
+
+// MATERIAL - UI
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -129,3 +264,4 @@ const ComboPage = () => {
   );
 };
 export default ComboPage;
+*/

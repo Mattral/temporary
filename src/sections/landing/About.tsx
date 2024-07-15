@@ -7,7 +7,6 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-//import IconButton from '@mui/material/IconButton';
 import Cropper, { Area } from 'react-easy-crop';
 import Slider from '@mui/material/Slider';
 import Dialog from '@mui/material/Dialog';
@@ -217,7 +216,7 @@ const AboutPanel = () => {
               <Box
                 onMouseEnter={() => setHoverIndex(4)}
                 onMouseLeave={() => setHoverIndex(null)}
-                sx={{ position: 'relative', display: 'inline-block' }}
+                sx={{ position: 'relative', display: 'inline-block', maxWidth: '100%' }} // Adjusted max width
               >
                 <img
                   alt={title}
@@ -227,16 +226,16 @@ const AboutPanel = () => {
                 {hoverIndex === 4 && (
                   <>
                     <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => fileInputRef.current?.click()}
-                        sx={{
-                          position: 'absolute',
-                          top: 0,
-                          right: 0,
-                          transform: 'translateY(-100%)',
-                          marginBottom: '8px',
-                        }}
+                      variant="contained"
+                      color="primary"
+                      onClick={() => fileInputRef.current?.click()}
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        transform: 'translateY(-100%)',
+                        marginBottom: '8px',
+                      }}
                     >
                       Upload
                     </Button>

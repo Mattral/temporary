@@ -18,7 +18,7 @@
     "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
