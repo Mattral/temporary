@@ -5,7 +5,7 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+//import Typography from '@mui/material/Typography';
 
 // THIRD - PARTY
 import { motion } from 'framer-motion';
