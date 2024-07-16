@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, Fragment } from 'react';
+
+// MATERIAL - UI
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
@@ -11,101 +13,68 @@ import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
+
+// PROJECT IMPORTS
 import MainCard from 'components/MainCard';
 
-// Initial data
-const initialPlans = [
+// PLAN LIST
+const plans = [
   {
     active: false,
     title: 'Starter',
-    description: '',
+    description: 'Free',
     price: 0,
-    permission: [0, 1, 2, 3, 4, 5, 6, 7]
+    permission: [0, 1, 2, 3]
   },
   {
     active: false,
     title: 'Basic',
-    description: '',
+    description: '03 Services',
     price: 69,
-    permission: [0, 1, 2, 3, 4, 5, 6, 7]
+    permission: [0, 1, 2]
   },
   {
     active: true,
     title: 'Standard',
-    description: '',
+    description: '05 Services',
     price: 129,
-    permission: [0, 1, 2, 3, 4, 5, 6, 7]
+    permission: [0, 1, 2, 3, 4]
   },
+  {
+    active: false,
+    title: 'Premium',
+    description: '08 Services',
+    price: 599,
+    permission: [0, 1, 2, 3, 4, 5, 6, 7]
+  }
 ];
 
-// Initial common texts
-const initialCommonTexts = [
-  'Access to our catalogue of 150+ document templates',
-  'Download in Microsoft Word format (Pay Per Document)',
-  'Access to over 300 articles, booklets, infographics and checklists',
-  'Geotagged Content',
-  'Discounted video sessions',
-  'Access encrypted, securely-stored video recordings of advice sessions',
-  '?',
-  '?'
+const planList = [
+  'Access to our catalogue of 150+ document templates', // 0
+  'Download in Microsoft Word format (Pay Per Document)', // 1
+  'Access to over 300 articles, booklets, infographics and checklists', // 2
+  'Geotagged Content', // 3
+  'Discounted video sessions', // 4
+  'Access encrypted, securely-stored video recordings of advice sessions', // 5
+  '?', // 6
+  '?' // 7
 ];
 
+// ==============================|| PRICING ||============================== //
 
 const Pricing1Page = () => {
-  const [plans, setPlans] = useState(initialPlans);
   const [timePeriod, setTimePeriod] = useState(true);
-  const [open, setOpen] = useState(false);
-  const [formValues, setFormValues] = useState(plans);
-  const [commonTexts, setCommonTexts] = useState(initialCommonTexts);
 
-  // Open modal dialog
-  const handleClickOpen = () => {
-    setFormValues(plans);
-    setOpen(true);
-  };
-
-  // Close modal dialog
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  // Handle change in form fields
-  const handleChange = (index: number, field: string, value: string | number) => {
-    if (field === 'commonText') {
-      const updatedCommonTexts = [...commonTexts];
-      updatedCommonTexts[index] = value as string;
-      setCommonTexts(updatedCommonTexts);
-    } else {
-      const updatedPlans = [...formValues];
-      updatedPlans[index] = { ...updatedPlans[index], [field]: value };
-      setFormValues(updatedPlans);
-    }
-  };
-
-  // Save changes from modal dialog
-  const handleSave = () => {
-    setPlans(formValues);
-    setOpen(false);
-  };
-
-  // Styles for disabled price list
   const priceListDisable = {
+    opacity: 0.4,
     textDecoration: 'line-through'
   };
 
-  // Styles for active plan price
   const priceActivePlan = {
     padding: 3,
     borderRadius: 1,
     bgcolor: 'primary.lighter'
   };
-
-  // Styles for price display
   const price = {
     fontSize: '40px',
     fontWeight: 700,
@@ -113,10 +82,10 @@ const Pricing1Page = () => {
   };
 
   return (
-    <Grid container spacing={3} sx={{ pt: 6 }}>
+    <Grid container spacing={3} sx={{ pt: 6 }}> {/* Add padding top here */}
       <Grid item xs={12}>
-        <Stack spacing={2} direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" sx={{ mb: 4 }}>
-          <Stack spacing={1} sx={{ mt: 2, textAlign: 'center' }}>
+        <Stack spacing={2} direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" sx={{ mb: 4 }}> {/* Add bottom margin */}
+          <Stack spacing={1} sx={{ mt: 2, textAlign: 'center' }}> {/* Add spacing and text alignment */}
             <Typography variant="h3">Choose what works for you!</Typography>
             <Typography color="textSecondary">
               Access to unlimited documents. Save over 40% when you subscribe for 6 months. Current Pricing is listed in AUD.
@@ -135,7 +104,7 @@ const Pricing1Page = () => {
       </Grid>
       <Grid item container spacing={3} xs={12} alignItems="center">
         {plans.map((plan, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={3} key={index}> {/* Adjusted the grid size */}
             <MainCard>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -179,10 +148,10 @@ const Pricing1Page = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <List sx={{ m: 0, p: 0, '&> li': { px: 0, py: 0.625 } }} component="ul">
-                    {plan.permission.map((perm, i) => (
+                    {planList.map((list, i) => (
                       <Fragment key={i}>
                         <ListItem sx={!plan.permission.includes(i) ? priceListDisable : {}}>
-                          <ListItemText primary={commonTexts[i]} sx={{ textAlign: 'center' }} />
+                          <ListItemText primary={list} sx={{ textAlign: 'center' }} />
                         </ListItem>
                       </Fragment>
                     ))}
@@ -193,63 +162,6 @@ const Pricing1Page = () => {
           </Grid>
         ))}
       </Grid>
-      <Grid item xs={12} sx={{ textAlign: 'center', mt: 4 }}>
-        <Button variant="contained" color="primary" onClick={handleClickOpen}>
-          Edit
-        </Button>
-      </Grid>
-      <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-        <DialogTitle>Edit Pricing Plans</DialogTitle>
-        <DialogContent>
-          {formValues.map((plan, index) => (
-            <Box key={index} sx={{ mb: 2 }}>
-              <TextField
-                fullWidth
-                label="Title"
-                value={plan.title}
-                onChange={(e) => handleChange(index, 'title', e.target.value)}
-                sx={{ mb: 1 }}
-              />
-              <TextField
-                fullWidth
-                label="Description"
-                value={plan.description}
-                onChange={(e) => handleChange(index, 'description', e.target.value)}
-                sx={{ mb: 1 }}
-              />
-              <TextField
-                fullWidth
-                type="number"
-                label="Price"
-                value={plan.price}
-                onChange={(e) => handleChange(index, 'price', parseInt(e.target.value))}
-                sx={{ mb: 1 }}
-              />
-            </Box>
-          ))}
-          <Typography variant="subtitle1" sx={{ mt: 3, mb: 1 }}>
-            Common Texts:
-          </Typography>
-          {commonTexts.map((text, index) => (
-            <TextField
-              key={index}
-              fullWidth
-              label={`Common Text ${index + 1}`}
-              value={commonTexts[index]}
-              onChange={(e) => handleChange(index, 'commonText', e.target.value)}
-              sx={{ mb: 2 }}
-            />
-          ))}
-        </DialogContent>
-        <DialogActions sx={{ justifyContent: 'space-between', px: 3, pb: 3 }}>
-          <Button onClick={handleClose} color="secondary">
-            Cancel
-          </Button>
-          <Button onClick={handleSave} color="primary" variant="contained">
-            Save
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Grid>
   );
 };
