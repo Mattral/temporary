@@ -38,6 +38,7 @@
     "@react-pdf/renderer": "^3.1.14",
     "@stream-io/video-react-sdk": "^1.2.13",
     "@svgr/webpack": "^8.1.0",
+    "antd": "^5.19.2",
     "apexcharts": "^3.45.0",
     "autosuggest-highlight": "^3.3.4",
     "axios": "^1.6.2",

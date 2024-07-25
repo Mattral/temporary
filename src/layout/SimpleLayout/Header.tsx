@@ -112,19 +112,19 @@ const Header = () => {
                 sx={{ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 }}
                 color="secondary.main"
                 component={Link}
-                href="#"
+                href="price/About"
                 target="_blank"
                 underline="none"
               >
                 About
               </Links>
-              <Links className="header-link" color="secondary.main" component={Link} href="/components-overview/buttons" underline="none">
+              <Links className="header-link" color="secondary.main" href="price/4Apps" underline="none">
                 Services
               </Links>
               <Links
                 className="header-link"
                 color="secondary.main"
-                href="#"
+                href="price/price1"
                 target="_blank"
                 underline="none"
               >
