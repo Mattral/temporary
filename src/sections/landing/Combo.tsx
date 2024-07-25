@@ -26,7 +26,14 @@ const featureFigma = '/assets/images/landing/feature-figma.png';
 const featureComponents = '/assets/images/landing/feature-components.png';
 const featureDocumentation = '/assets/images/landing/feature-documentation.png';
 
-const initialTechnologies = [
+interface Technology {
+  icon: string;
+  title: string;
+  description: string;
+  preview: string;
+}
+
+const initialTechnologies: Technology[] = [
   {
     icon: featureFigma,
     title: 'Consult with Legal Advisor',
@@ -48,11 +55,11 @@ const initialTechnologies = [
 ];
 
 const ComboPage = () => {
-  const [technologies, setTechnologies] = useState(initialTechnologies);
+  const [technologies, setTechnologies] = useState<Technology[]>(initialTechnologies);
   const [open, setOpen] = useState(false);
-  const [currentCard, setCurrentCard] = useState(null);
+  const [currentCard, setCurrentCard] = useState<Technology & { index?: number } | null>(null);
 
-  const handleClickOpen = (card, index) => {
+  const handleClickOpen = (card: Technology, index: number) => {
     setCurrentCard({ ...card, index });
     setOpen(true);
   };
@@ -63,20 +70,22 @@ const ComboPage = () => {
   };
 
   const handleSave = () => {
-    const updatedTechnologies = technologies.map((tech, index) =>
-      index === currentCard.index ? currentCard : tech
-    );
-    setTechnologies(updatedTechnologies);
+    if (currentCard?.index !== undefined) {
+      const updatedTechnologies = technologies.map((tech, index) =>
+        index === currentCard.index ? currentCard : tech
+      );
+      setTechnologies(updatedTechnologies);
+    }
     handleClose();
   };
 
-  const handleDelete = (indexToDelete) => {
+  const handleDelete = (indexToDelete: number) => {
     const updatedTechnologies = technologies.filter((_, index) => index !== indexToDelete);
     setTechnologies(updatedTechnologies);
   };
 
   const handleAdd = () => {
-    const newCard = {
+    const newCard: Technology = {
       icon: featureFigma,
       title: 'New Service',
       description: 'Description of new service.',
@@ -85,9 +94,11 @@ const ComboPage = () => {
     setTechnologies([...technologies, newCard]);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCurrentCard({ ...currentCard, [name]: value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (currentCard) {
+      const { name, value } = e.target;
+      setCurrentCard({ ...currentCard, [name]: value });
+    }
   };
 
   return (
@@ -234,6 +245,7 @@ const ComboPage = () => {
 };
 
 export default ComboPage;
+
 
 
 /* each edit version
