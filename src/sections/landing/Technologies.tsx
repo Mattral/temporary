@@ -79,12 +79,13 @@ const TechnologiesPage = () => {
   };
 
   const handleAddClick = () => {
-    setTechnologies([...technologies, { title, description, icon }]);
+    setTechnologies([...technologies, { title, description, icon, free: '', preview: '' }]);
     setTitle('');
     setDescription('');
     setIcon('');
   };
 
+  
   return (
     <Container>
       <Grid container spacing={3} alignItems="center" justifyContent="center" sx={{ mt: { md: 15, xs: 2.5 }, mb: { md: 10, xs: 2.5 } }}>
