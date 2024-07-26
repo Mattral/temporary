@@ -1,7 +1,7 @@
 'use client';
 
 import { lazy, ReactNode } from 'react';
-
+import { useRef } from 'react';
 // NEXT
 import { usePathname } from 'next/navigation';
 
@@ -12,7 +12,7 @@ const FooterBlock = lazy(() => import('./FooterBlock'));
 // PROJECT IMPORTS
 import Loader from 'components/Loader';
 import { useGetMenuMaster } from 'api/menu';
-
+//import Header from 'layout/SimpleLayout/Header';
 // ==============================|| LAYOUTS - STRUCTURE ||============================== //
 
 interface Props {
@@ -20,6 +20,10 @@ interface Props {
 }
 
 const SimpleLayout = ({ children }: Props) => {
+  const aboutRef = useRef(null);
+  const servicesRef = useRef(null);
+  const pricingRef = useRef(null);
+
   const { menuMasterLoading } = useGetMenuMaster();
 
   const pathname = usePathname();
@@ -29,7 +33,7 @@ const SimpleLayout = ({ children }: Props) => {
 
   return (
     <>
-      <Header />
+      <Header refs={{ aboutRef, servicesRef, pricingRef }} />
       {children}
       <FooterBlock isFull={layout === 'landing'} />
     </>
@@ -37,3 +41,4 @@ const SimpleLayout = ({ children }: Props) => {
 };
 
 export default SimpleLayout;
+
