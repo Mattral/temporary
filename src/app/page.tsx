@@ -13,6 +13,8 @@ import About from 'sections/landing/About';
 import FooterBlock from 'sections/landing/FB';
 import Header from 'layout/SimpleLayout/Header';// Adjust the import path as needed
 
+
+
 const Landing = () => {
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
@@ -21,7 +23,9 @@ const Landing = () => {
   return (
     <SimpleLayout>
       <Header refs={{ aboutRef, servicesRef, pricingRef }} />
+
       <Hero />
+
       <Apps />
       <div ref={servicesRef} id="services">
         <Technologies />
