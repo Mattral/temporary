@@ -23,11 +23,11 @@ const Landing = () => {
       <Header refs={{ aboutRef, servicesRef, pricingRef }} />
       <Hero />
       <Apps />
-      <div ref={servicesRef}>
+      <div ref={servicesRef} id="services">
         <Technologies />
       </div>
       <Combo />
-      <div ref={pricingRef}>
+      <div ref={pricingRef} id="pricing">
         <Pricing1Page />
       </div>
       <div ref={aboutRef}>

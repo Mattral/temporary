@@ -119,7 +119,15 @@ const Header: React.FC<HeaderProps> = ({ refs }) => {
               }}
               spacing={3}
             >
-             <ScrollLink to="about" smooth={true} duration={500} className="header-link">
+             
+
+            <ScrollLink to="services" smooth={true} duration={500} className="header-link">
+              <Links className="header-link" color="secondary.main" href="#" underline="none">
+                Services
+              </Links>
+            </ScrollLink>
+
+            <ScrollLink to="about" smooth={true} duration={500} className="header-link">
               <Links
                 className="header-link"
                 sx={{ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 }}
@@ -132,12 +140,6 @@ const Header: React.FC<HeaderProps> = ({ refs }) => {
                 About
               </Links>
             </ScrollLink> 
-
-            <ScrollLink to="services" smooth={true} duration={500} className="header-link">
-              <Links className="header-link" color="secondary.main" href="#" underline="none">
-                Services
-              </Links>
-            </ScrollLink>
 
             <ScrollLink to="pricing" smooth={true} duration={500} className="header-link">
               <Links
