@@ -19,6 +19,7 @@ const Landing = () => (
   <SimpleLayout>
     <Hero />
     <Apps />
+    
     <Technologies />
     <Combo />
     

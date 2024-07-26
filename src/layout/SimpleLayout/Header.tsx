@@ -24,11 +24,23 @@ import AnimateButton from 'components/@extended/AnimateButton';
 import Logo from 'components/logo';
 import { ExportSquare, HambergerMenu, Minus } from 'iconsax-react';
 import { ThemeDirection } from 'types/config';
+import { Link as ScrollLink } from 'react-scroll';
 
 interface ElevationScrollProps {
   children: ReactElement;
   window?: Window | Node;
 }
+
+//Added part 
+interface HeaderProps {
+  refs: {
+    aboutRef: React.RefObject<HTMLDivElement>;
+    servicesRef: React.RefObject<HTMLDivElement>;
+    pricingRef: React.RefObject<HTMLDivElement>;
+  };
+}
+
+
 
 function ElevationScroll({ children, window }: ElevationScrollProps) {
   const trigger = useScrollTrigger({
@@ -44,7 +56,7 @@ function ElevationScroll({ children, window }: ElevationScrollProps) {
   });
 }
 
-const Header = () => {
+const Header: React.FC<HeaderProps> = ({ refs }) => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerToggle, setDrawerToggle] = useState<boolean>(false);
@@ -107,29 +119,41 @@ const Header = () => {
               }}
               spacing={3}
             >
+             <ScrollLink to="about" smooth={true} duration={500} className="header-link">
               <Links
                 className="header-link"
                 sx={{ ml: theme.direction === ThemeDirection.RTL ? 3 : 0 }}
                 color="secondary.main"
                 component={Link}
-                href="price/About"
+                href="#"
                 target="_blank"
                 underline="none"
               >
                 About
               </Links>
-              <Links className="header-link" color="secondary.main" href="price/4Apps" underline="none">
+            </ScrollLink> 
+
+            <ScrollLink to="services" smooth={true} duration={500} className="header-link">
+              <Links className="header-link" color="secondary.main" href="#" underline="none">
                 Services
               </Links>
+            </ScrollLink>
+
+            <ScrollLink to="pricing" smooth={true} duration={500} className="header-link">
               <Links
                 className="header-link"
                 color="secondary.main"
-                href="price/price1"
+                href="#"
                 target="_blank"
                 underline="none"
               >
                 Pricing
               </Links>
+            </ScrollLink>
+              
+
+
+              
 
               <Box sx={{ display: 'inline-block' }}>
                 <AnimateButton>
@@ -168,8 +192,8 @@ const Header = () => {
                 <Logo reverse to="/" />
               </Typography>
               <Stack direction="row" spacing={2}>
-                <Button variant="outlined" color="warning" component={Link} href="/components-overview/buttons" sx={{ mt: 0.25 }}>
-                  All Components
+                <Button variant="outlined" color="warning" component={Link} href="#" sx={{ mt: 0.25 }}>
+                  Fully Suppot
                 </Button>
 
                 <IconButton size="large" color="secondary" onClick={drawerToggler(true)} sx={{ p: 1 }}>
@@ -202,7 +226,7 @@ const Header = () => {
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="All Components" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText primary="All Services" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
                     <Links sx={linksSx} href="#" target="_blank">
@@ -210,7 +234,7 @@ const Header = () => {
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="Free Version" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText primary="Probono" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
                     <Links sx={linksSx} href="#" target="_blank">
@@ -218,7 +242,7 @@ const Header = () => {
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="Documentation" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText primary="Document Generation" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
                       </ListItemButton>
                     </Links>
                     <Links sx={linksSx} href="#" target="_blank">
