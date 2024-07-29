@@ -1,0 +1,65 @@
+/* PersonalRoom.module.css */
+
+/* General container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    color: white;
+    height: 100vh;
+    padding: 1rem;
+  }
+  
+  /* Heading styles */
+  .heading {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .headingLg {
+    font-size: 1.875rem; /* lg:text-3xl */
+  }
+  
+  /* Table styles */
+  .tableContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+  }
+  
+  .tableItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .tableTitle {
+    font-size: 1rem; /* text-base */
+    font-weight: 500; /* font-medium */
+    color: #0ea5e9; /* text-sky-1 */
+  }
+  
+  .tableDescription {
+    font-size: 0.875rem; /* text-sm */
+    font-weight: bold;
+    max-width: 320px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  /* Button styles */
+  .buttonContainer {
+    display: flex;
+    gap: 1.25rem;
+  }
+  
+  .buttonStart {
+    background-color: #3b82f6; /* bg-blue-1 */
+  }
+  
+  .buttonCopy {
+    background-color: #374151; /* bg-dark-3 */
+  }
+  
