@@ -128,7 +128,7 @@ const applications: NavItemType = {
         },
         {
           id: 'Recordings',
-          title: <FormattedMessage id="Recordings" />,
+          title: <FormattedMessage id="Recordings & History" />,
           type: 'item',
           url: '/apps/e-commerce/product-list'
         },

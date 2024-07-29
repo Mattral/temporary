@@ -139,7 +139,7 @@ const CustomerCardPage = () => {
 
             <DebouncedInput
               value={globalFilter ?? ''}
-              
+              onFilterChange={(value) => setGlobalFilter(String(value))}
               placeholder={`Select Time-Frame...`}
             />
 
