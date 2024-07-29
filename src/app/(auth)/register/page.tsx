@@ -1,17 +1,3 @@
-
-
-import { SignUp } from "@clerk/nextjs";
-
-// ================================|| REGISTER ||================================ //
-
-const RegisterPage = () => {
-  return <SignUp />;
-};
-
-export default RegisterPage;
-
-
-/*
 // PROJECT IMPORTS
 import Register from 'views/authentication/Register';
 
@@ -19,6 +5,20 @@ import Register from 'views/authentication/Register';
 
 const RegisterPage = () => {
   return <Register />;
+};
+
+export default RegisterPage;
+
+
+
+
+/*
+import { SignUp } from "@clerk/nextjs";
+
+// ================================|| REGISTER ||================================ //
+
+const RegisterPage = () => {
+  return <SignUp />;
 };
 
 export default RegisterPage;
