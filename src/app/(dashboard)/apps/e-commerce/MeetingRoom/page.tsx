@@ -9,7 +9,7 @@ import { useUser } from "@clerk/nextjs";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import { useParams } from "next/navigation";
 import React, { useState } from "react";
-import styles from './Meeting.module.css'; // Import the CSS module
+import styles from './MeetingRoom.module.css'; // Import the CSS module
 
 const Meeting = () => {
   const { id } = useParams();
