@@ -5,6 +5,7 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+import GuestGuard from 'utils/route-guard/GuestGuard';
 
 export default function RootLayout({
   children,
@@ -21,7 +22,9 @@ export default function RootLayout({
           <SignedIn>
             <UserButton />
           </SignedIn>
+          <GuestGuard>
           {children}
+          </GuestGuard>
         </body>
       </html>
     </ClerkProvider>
