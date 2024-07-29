@@ -10,16 +10,14 @@ import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import { useParams } from "next/navigation";
 import React, { useState } from "react";
 
-const Meeting = () => {
+const Meeting = ({ params }: { params: { id: string } }) => {
   const { id } = useParams();
   const { isLoaded, user } = useUser();
   const { call, isCallLoading } = useGetCallById(id);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
-  // Show loader while user or call data is being fetched
   if (!isLoaded || isCallLoading) return <Loader />;
 
-  // Show message if call data is not found
   if (!call)
     return (
       <p className="text-center text-3xl font-bold text-white">
@@ -27,7 +25,7 @@ const Meeting = () => {
       </p>
     );
 
-  // Check if the user is allowed to join the call
+  // get more info about custom call type:  https://getstream.io/video/docs/react/guides/configuring-call-types/
   const notAllowed =
     call.type === "invited" &&
     (!user || !call.state.members.find((m) => m.user.id === user.id));
@@ -35,7 +33,6 @@ const Meeting = () => {
   if (notAllowed)
     return <Alert title="You are not allowed to join this meeting" />;
 
-  // Render the meeting setup or meeting room based on setup completion
   return (
     <main className="h-screen w-full">
       <StreamCall call={call}>
