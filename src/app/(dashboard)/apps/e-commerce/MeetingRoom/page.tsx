@@ -23,7 +23,7 @@ const Meeting = () => {
   // Show message if call data is not found
   if (!call)
     return (
-      <p className="text-center text-3xl font-bold text-white">
+      <p className="text-center text-3xl font-bold text-black">
         Call Not Found
       </p>
     );

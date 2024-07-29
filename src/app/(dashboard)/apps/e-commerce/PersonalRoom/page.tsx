@@ -3,7 +3,7 @@
 import { useUser } from "@clerk/nextjs";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
-
+import MeetingTypeList from "components/MeetingTypeList";
 import { useGetCallById } from "hooks/useGetCallById";
 import { Button } from "components/ui/button";
 import { useToast } from "components/ui/use-toast";
@@ -78,11 +78,17 @@ const PersonalRoom = () => {
           Copy Invitation
         </Button>
       </div>
+      <h1 className={`${styles.heading} ${styles.headingLg}`}>
+        Meeting Menu
+      </h1>
+      <MeetingTypeList />
     </section>
+    
   );
 };
 
 export default PersonalRoom;
+
 
 
 

@@ -127,6 +127,12 @@ const applications: NavItemType = {
           url: '/apps/e-commerce/Schedule'
         },
         {
+          id: 'Recordings',
+          title: <FormattedMessage id="Recordings" />,
+          type: 'item',
+          url: '/apps/e-commerce/product-list'
+        },
+        {
           id: 'add-new-schedule',
           title: <FormattedMessage id="add-new-schedule" />,
           type: 'item',
