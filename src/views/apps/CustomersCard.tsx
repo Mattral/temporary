@@ -40,7 +40,7 @@ const allColumns = [
   },
   {
     id: 2,
-    header: 'Customer Name'
+    header: 'Advisor Name'
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ const allColumns = [
 
 function dataSort(data: CustomerList[], sortBy: string) {
   return data.sort(function (a: any, b: any) {
-    if (sortBy === 'Customer Name') return a.name.localeCompare(b.name);
+    if (sortBy === 'Advisor Name') return a.name.localeCompare(b.name);
     if (sortBy === 'Email') return a.email.localeCompare(b.email);
     if (sortBy === 'Contact') return a.contact.localeCompare(b.contact);
     if (sortBy === 'Age') return b.age < a.age ? 1 : -1;
@@ -135,6 +135,17 @@ const CustomerCardPage = () => {
               onFilterChange={(value) => setGlobalFilter(String(value))}
               placeholder={`Search ${userCard.length} records...`}
             />
+
+
+            <DebouncedInput
+              value={globalFilter ?? ''}
+              
+              placeholder={`Select Time-Frame...`}
+            />
+
+
+
+
             <Stack direction={matchDownSM ? 'column' : 'row'} alignItems="center" spacing={1}>
               <FormControl sx={{ m: 1, minWidth: 120 }}>
                 <Select
@@ -159,8 +170,37 @@ const CustomerCardPage = () => {
                   })}
                 </Select>
               </FormControl>
+
+
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <Select
+                  value={sortBy}
+                  onChange={handleChange}
+                  displayEmpty
+                  inputProps={{ 'aria-label': 'Without label' }}
+                  renderValue={(selected) => {
+                    if (!selected) {
+                      return <Typography variant="subtitle1">Sort By</Typography>;
+                    }
+
+                    return <Typography variant="subtitle2">Sort by ({sortBy})</Typography>;
+                  }}
+                >
+                  {allColumns.map((column) => {
+                    return (
+                      <MenuItem key={column.id} value={column.header}>
+                        {column.header}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+
+
+
+
               <Button variant="contained" onClick={() => setCustomerModal(true)} size="large" startIcon={<Add />}>
-                Add Customer
+                Add Advisor Demo
               </Button>
             </Stack>
           </Stack>
