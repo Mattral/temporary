@@ -159,7 +159,7 @@ const CustomerCard = ({ customer }: { customer: CustomerList }) => {
                     <ListItemText
                       primary={
                         <Typography color="secondary">
-                          <PatternFormat displayType="text" format="+1 (###) ###-####" mask="_" defaultValue={customer.contact} />
+                          <PatternFormat displayType="text" format="+(###) ###-####" mask="_" defaultValue={customer.contact} />
                         </Typography>
                       }
                     />
@@ -181,7 +181,7 @@ const CustomerCard = ({ customer }: { customer: CustomerList }) => {
                     <ListItemText
                       primary={
                         <Link href="https://google.com" target="_blank" sx={{ textTransform: 'lowercase' }}>
-                          https://{customer.firstName}.en
+                          https://{customer.firstName}.com
                         </Link>
                       }
                     />

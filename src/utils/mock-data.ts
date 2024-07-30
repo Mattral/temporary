@@ -14,21 +14,22 @@ export const range = (len: number): number[] => {
 };
 
 const skills = [
-  'UI Design',
-  'Mobile App',
-  'Web App',
-  'UX',
-  'Wireframing',
-  'Prototyping',
-  'Backend',
-  'React',
-  'Angular',
-  'Javascript',
-  'HTML',
-  'ES6',
-  'Figma',
-  'Codeigniter'
+  'Legal Research',
+  'Analytical Thinking',
+  'Communication',
+  'Negotiation',
+  'Courtroom Advocacy',
+  'Client Counseling',
+  'Ethical Judgment',
+  'Arbitration',
+  'Legal Writing',
+  'Confidentiality',
+  'Financial Acumen',
+  'Forensic Analysis',
+  'Taxation',
+  'Accountant'
 ];
+
 
 const time = ['just now', '1 day ago', '2 min ago', '2 days ago', '1 week ago', '1 year ago', '5 months ago', '3 hours ago', '1 hour ago'];
 
