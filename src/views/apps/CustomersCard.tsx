@@ -162,7 +162,7 @@ const CustomerCardPage = () => {
                 startDate={startDate}
                 endDate={endDate}
                 placeholderText="Start Date"
-                className="w-full rounded bg-dark-3 p-2 focus:outline-none"
+                className="w-full rounded bg-white-3 p-2 focus:outline-none"
               />
               <ReactDatePicker
                 selected={endDate}
@@ -172,7 +172,7 @@ const CustomerCardPage = () => {
                 endDate={endDate}
                 minDate={startDate}
                 placeholderText="End Date"
-                className="w-full rounded bg-dark-3 p-2 focus:outline-none"
+                className="w-full rounded bg-white-3 p-2 focus:outline-none"
               />
             </Stack>
 
