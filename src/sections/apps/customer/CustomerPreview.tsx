@@ -6,7 +6,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
-//import Link from '@mui/material/Link';
+import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -19,6 +19,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
@@ -66,6 +67,10 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
   const [selectedDay, setSelectedDay] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [serviceFee, setServiceFee] = useState<number>(0);
+  const [serviceFeeEditOpen, setServiceFeeEditOpen] = useState(false);
+  const [days, setDays] = useState<string[]>(daysOfWeek);
+  const [editDaysOpen, setEditDaysOpen] = useState(false);
 
   const handleDaySelection = (day: string) => setSelectedDay(day);
   const handleTimeSelection = (time: string) => setSelectedTime(time);
@@ -81,6 +86,16 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
+  };
+
+  const handleServiceFeeEditOpen = () => setServiceFeeEditOpen(true);
+  const handleServiceFeeEditClose = () => setServiceFeeEditOpen(false);
+  const handleServiceFeeChange = (event: React.ChangeEvent<HTMLInputElement>) => setServiceFee(parseFloat(event.target.value));
+
+  const handleEditDaysOpen = () => setEditDaysOpen(true);
+  const handleEditDaysClose = () => setEditDaysOpen(false);
+  const handleDayToggle = (day: string) => {
+    setDays((prevDays) => (prevDays.includes(day) ? prevDays.filter(d => d !== day) : [...prevDays, day]));
   };
 
   return (
@@ -203,17 +218,30 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                             <Grid container spacing={matchDownMD ? 0.5 : 3}>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
-                                  <Typography color="secondary">Senior UI/UX designer (Year)</Typography>
-                                  <Typography>2019-Current</Typography>
+                                  <Typography color="secondary">Lead UX (Year)</Typography>
+                                  <Typography>2019-Present</Typography>
                                 </Stack>
                               </Grid>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
-                                  <Typography color="secondary">Job Responsibility</Typography>
-                                  <Typography>
-                                    Perform task related to project manager with the 100+ team under my observation. Team management is key
-                                    role in this company.
-                                  </Typography>
+                                  <Typography color="secondary">Company</Typography>
+                                  <Typography>India Pvt Ltd</Typography>
+                                </Stack>
+                              </Grid>
+                            </Grid>
+                          </ListItem>
+                          <ListItem divider>
+                            <Grid container spacing={matchDownMD ? 0.5 : 3}>
+                              <Grid item xs={12} md={6}>
+                                <Stack spacing={0.5}>
+                                  <Typography color="secondary">Sr. UI/UX Designer (Year)</Typography>
+                                  <Typography>2016-2019</Typography>
+                                </Stack>
+                              </Grid>
+                              <Grid item xs={12} md={6}>
+                                <Stack spacing={0.5}>
+                                  <Typography color="secondary">Company</Typography>
+                                  <Typography>Creative Pvt Ltd</Typography>
                                 </Stack>
                               </Grid>
                             </Grid>
@@ -222,14 +250,14 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                             <Grid container spacing={matchDownMD ? 0.5 : 3}>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
-                                  <Typography color="secondary">Trainee cum Project Manager (Year)</Typography>
-                                  <Typography>2017-2019</Typography>
+                                  <Typography color="secondary">UI/UX Designer (Year)</Typography>
+                                  <Typography>2013-2016</Typography>
                                 </Stack>
                               </Grid>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
-                                  <Typography color="secondary">Job Responsibility</Typography>
-                                  <Typography>Team management is key role in this company.</Typography>
+                                  <Typography color="secondary">Company</Typography>
+                                  <Typography>-</Typography>
                                 </Stack>
                               </Grid>
                             </Grid>
@@ -254,9 +282,19 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                   <MainCard>
                     <Stack spacing={2}>
                       <Stack spacing={0.5}>
+                        <Typography color="secondary">Service Fee per Minute</Typography>
+                        <Stack direction="row" alignItems="center" spacing={1}>
+                          <Typography variant="h6">${serviceFee}</Typography>
+                          <Button variant="outlined" size="small" onClick={handleServiceFeeEditOpen}>
+                            Edit
+                          </Button>
+                        </Stack>
+                      </Stack>
+
+                      <Stack spacing={0.5}>
                         <Typography color="secondary">Select Day</Typography>
                         <Stack direction="row" spacing={1} flexWrap="wrap">
-                          {daysOfWeek.map((day) => (
+                          {days.map((day) => (
                             <Button
                               key={day}
                               variant={selectedDay === day ? 'contained' : 'outlined'}
@@ -266,8 +304,12 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                               {day}
                             </Button>
                           ))}
+                          <Button variant="outlined" size="small" onClick={handleEditDaysOpen}>
+                            Edit Days
+                          </Button>
                         </Stack>
                       </Stack>
+
                       <Stack spacing={0.5}>
                         <Typography color="secondary">Select Time</Typography>
                         <Stack direction="row" spacing={1} flexWrap="wrap">
@@ -302,6 +344,51 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
         </Box>
       </Dialog>
       <AlertCustomerDelete id={customer.id!} title={customer.name} open={openAlert} handleClose={handleClose} />
+
+      <Dialog open={serviceFeeEditOpen} onClose={handleServiceFeeEditClose}>
+        <DialogTitle>Edit Service Fee</DialogTitle>
+        <DialogContent>
+          <TextField
+            type="number"
+            label="Service Fee per Minute"
+            value={serviceFee}
+            onChange={handleServiceFeeChange}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleServiceFeeEditClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleServiceFeeEditClose} color="primary">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog open={editDaysOpen} onClose={handleEditDaysClose}>
+        <DialogTitle>Edit Days</DialogTitle>
+        <DialogContent>
+          <Typography>Select days to enable or disable:</Typography>
+          {daysOfWeek.map((day) => (
+            <Stack key={day} direction="row" alignItems="center" spacing={1}>
+              <Typography>{day}</Typography>
+              <Button
+                variant={days.includes(day) ? 'contained' : 'outlined'}
+                onClick={() => handleDayToggle(day)}
+                sx={{ mb: 1 }}
+              >
+                {days.includes(day) ? 'Disable' : 'Enable'}
+              </Button>
+            </Stack>
+          ))}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleEditDaysClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
         <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
