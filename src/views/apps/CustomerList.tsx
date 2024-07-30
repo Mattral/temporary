@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect, useMemo, FC, Fragment } from 'react';
+import { useCallback, useEffect, useMemo, useState, FC, Fragment, MouseEvent } from 'react';
 
 // MATERIAL - UI
 import { alpha, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
-import Chip from '@mui/material/Chip';
-
+import Tooltip from '@mui/material/Tooltip';
 import TableRow from '@mui/material/TableRow';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -19,6 +19,7 @@ import Typography from '@mui/material/Typography';
 import { PatternFormat } from 'react-number-format';
 import {
   useFilters,
+  useExpanded,
   useGlobalFilter,
   useRowSelect,
   useSortBy,
@@ -35,35 +36,41 @@ import {
 import MainCard from 'components/MainCard';
 import ScrollX from 'components/ScrollX';
 import Avatar from 'components/@extended/Avatar';
+import IconButton from 'components/@extended/IconButton';
+
 import {
-  CSVExport,
   HeaderSort,
   IndeterminateCheckbox,
-  SortingSelect,
   TablePagination,
   TableRowSelection
 } from 'components/third-party/ReactTable';
 import CustomerView from 'sections/apps/customer/CustomerView';
+import AlertCustomerDelete from 'sections/apps/customer/AlertCustomerDelete';
+import CustomerModal from 'sections/apps/customer/CustomerModal';
 import EmptyTables from 'views/forms-tables/tables/react-table/EmptyTable';
 
 import { useGetCustomer } from 'api/customer';
 import { renderFilterTypes, GlobalFilter } from 'utils/react-table';
 
 // ASSETS
-//import { Add } from 'iconsax-react';
+import { Add, Eye, Trash } from 'iconsax-react';
 
 // TYPES
+import { ThemeMode } from 'types/config';
 import type { CustomerList } from 'types/customer';
 
 const avatarImage = '/assets/images/users';
 
+// ==============================|| REACT TABLE ||============================== //
+
 interface Props {
   columns: Column[];
   data: CustomerList[];
+  modalToggler: () => void;
   renderRowSubComponent: FC<any>;
 }
 
-function ReactTable({ columns, data, renderRowSubComponent }: Props) {
+function ReactTable({ columns, data, renderRowSubComponent, modalToggler }: Props) {
   const theme = useTheme();
   const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -76,16 +83,14 @@ function ReactTable({ columns, data, renderRowSubComponent }: Props) {
     headerGroups,
     prepareRow,
     setHiddenColumns,
-    allColumns,
+    visibleColumns,
     rows,
     page,
     gotoPage,
     setPageSize,
-    state: { globalFilter, selectedRowIds, pageIndex, pageSize },
+    state: { globalFilter, selectedRowIds, pageIndex, pageSize, expanded },
     preGlobalFilteredRows,
-    setGlobalFilter,
-    setSortBy,
-    selectedFlatRows
+    setGlobalFilter
   } = useTable(
     {
       columns,
@@ -96,6 +101,7 @@ function ReactTable({ columns, data, renderRowSubComponent }: Props) {
     useGlobalFilter,
     useFilters,
     useSortBy,
+    useExpanded,
     usePagination,
     useRowSelect
   );
@@ -106,6 +112,7 @@ function ReactTable({ columns, data, renderRowSubComponent }: Props) {
     } else {
       setHiddenColumns(['avatar', 'email']);
     }
+    // eslint-disable-next-line
   }, [matchDownSM]);
 
   return (
@@ -120,13 +127,7 @@ function ReactTable({ columns, data, renderRowSubComponent }: Props) {
           sx={{ p: 3, pb: 0 }}
         >
           <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows} globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
-          <Stack direction={matchDownSM ? 'column' : 'row'} alignItems="center" spacing={2}>
-            <SortingSelect sortBy={sortBy.id} setSortBy={setSortBy} allColumns={allColumns} />
-            <CSVExport
-              data={selectedFlatRows.length > 0 ? selectedFlatRows.map((d: Row) => d.original) : data}
-              filename={'customer-list.csv'}
-            />
-          </Stack>
+
         </Stack>
         <Table {...getTableProps()}>
           <TableHead>
@@ -164,7 +165,7 @@ function ReactTable({ columns, data, renderRowSubComponent }: Props) {
                       </Fragment>
                     ))}
                   </TableRow>
-                  {row.isExpanded && renderRowSubComponent({ row, rowProps })}
+                  {row.isExpanded && renderRowSubComponent({ row, rowProps, visibleColumns, expanded })}
                 </Fragment>
               );
             })}
@@ -180,8 +181,22 @@ function ReactTable({ columns, data, renderRowSubComponent }: Props) {
   );
 }
 
+// ==============================|| CUSTOMER - LIST ||============================== //
+
 const CustomerList = () => {
+  const theme = useTheme();
+  const mode = theme.palette.mode;
+
   const { customersLoading: loading, customers: lists } = useGetCustomer();
+
+  const [open, setOpen] = useState<boolean>(false);
+  const [customer, setCustomer] = useState<any>(null);
+  const [customerDeleteId, setCustomerDeleteId] = useState<any>('');
+  const [customerModal, setCustomerModal] = useState<boolean>(false);
+
+  const handleClose = () => {
+    setOpen(!open);
+  };
 
   const columns = useMemo(
     () => [
@@ -254,12 +269,51 @@ const CustomerList = () => {
               return <Chip color="info" label="Pending" size="small" variant="light" />;
           }
         }
+      },
+      {
+        Header: 'Actions',
+        className: 'cell-center',
+        disableSortBy: true,
+        Cell: ({ row }: { row: Row<{}> }) => {
+
+          // @ts-ignore
+          const collapseIcon = row.isExpanded ? <Add style={{ color: theme.palette.error.main, transform: 'rotate(45deg)' }} /> : <Eye />;
+          return (
+            <Stack direction="row" alignItems="center" justifyContent="center" spacing={0}>
+
+
+              <Tooltip
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      backgroundColor: mode === ThemeMode.DARK ? theme.palette.grey[50] : theme.palette.grey[700],
+                      opacity: 0.9
+                    }
+                  }
+                }}
+                title="Delete"
+              >
+                <IconButton
+                  color="error"
+                  onClick={(e: MouseEvent<HTMLButtonElement>) => {
+                    e.stopPropagation();
+                    handleClose();
+                    setCustomerDeleteId(row.values.id);
+                  }}
+                >
+                  <Trash />
+                </IconButton>
+              </Tooltip>
+            </Stack>
+          );
+        }
       }
     ],
-    []
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [theme]
   );
 
-  const renderRowSubComponent = ({ row }: { row: Row<{}> }) => <CustomerView data={lists[Number(row.id)]} />;
+  const renderRowSubComponent = useCallback(({ row }: { row: Row<{}> }) => <CustomerView data={lists[Number(row.id)]} />, [lists]);
   if (loading) return <EmptyTables />;
 
   return (
@@ -268,9 +322,15 @@ const CustomerList = () => {
         <ReactTable
           columns={columns}
           data={lists}
+          modalToggler={() => {
+            setCustomerModal(true);
+            setCustomer(null);
+          }}
           renderRowSubComponent={renderRowSubComponent}
         />
       </ScrollX>
+      <AlertCustomerDelete title={customerDeleteId} open={open} handleClose={handleClose} id={customerDeleteId} />
+      <CustomerModal open={customerModal} modalToggler={setCustomerModal} customer={customer} />
     </MainCard>
   );
 };
