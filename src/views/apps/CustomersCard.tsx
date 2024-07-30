@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-// MATIRIAL-UI
+// MATERIAL-UI
 import { Theme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
@@ -21,6 +21,8 @@ import EmptyUserCard from 'components/cards/skeleton/EmptyUserCard';
 import { DebouncedInput } from 'components/third-party/DebouncedInput';
 import CustomerCard from 'sections/apps/customer/CustomerCard';
 import CustomerModal from 'sections/apps/customer/CustomerModal';
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import usePagination from 'hooks/usePagination';
 import { useGetCustomer } from 'api/customer';
@@ -64,6 +66,14 @@ const allColumns = [
   }
 ];
 
+const legalDomains = [
+  'Corporate Law',
+  'Family Law',
+  'Intellectual Property',
+  'Labor Law',
+  'Real Estate Law'
+];
+
 function dataSort(data: CustomerList[], sortBy: string) {
   return data.sort(function (a: any, b: any) {
     if (sortBy === 'Advisor Name') return a.name.localeCompare(b.name);
@@ -87,9 +97,16 @@ const CustomerCardPage = () => {
   const [page, setPage] = useState(1);
   const [customerLoading, setCustomerLoading] = useState<boolean>(true);
   const [customerModal, setCustomerModal] = useState<boolean>(false);
+  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
+  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
+  const [selectedDomain, setSelectedDomain] = useState<string>('');
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChangeSort = (event: SelectChangeEvent) => {
     setSortBy(event.target.value as string);
+  };
+
+  const handleChangeDomain = (event: SelectChangeEvent) => {
+    setSelectedDomain(event.target.value as string);
   };
 
   // search
@@ -136,73 +153,82 @@ const CustomerCardPage = () => {
               placeholder={`Search ${userCard.length} records...`}
             />
 
-
-            <DebouncedInput
-              value={globalFilter ?? ''}
-              onFilterChange={(value) => setGlobalFilter(String(value))}
-              placeholder={`Select Time-Frame...`}
-            />
-
-
-
-
-            <Stack direction={matchDownSM ? 'column' : 'row'} alignItems="center" spacing={1}>
-              <FormControl sx={{ m: 1, minWidth: 120 }}>
-                <Select
-                  value={sortBy}
-                  onChange={handleChange}
-                  displayEmpty
-                  inputProps={{ 'aria-label': 'Without label' }}
-                  renderValue={(selected) => {
-                    if (!selected) {
-                      return <Typography variant="subtitle1">Sort By</Typography>;
-                    }
-
-                    return <Typography variant="subtitle2">Sort by ({sortBy})</Typography>;
-                  }}
-                >
-                  {allColumns.map((column) => {
-                    return (
-                      <MenuItem key={column.id} value={column.header}>
-                        {column.header}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-
-
-              <FormControl sx={{ m: 1, minWidth: 120 }}>
-                <Select
-                  value={sortBy}
-                  onChange={handleChange}
-                  displayEmpty
-                  inputProps={{ 'aria-label': 'Without label' }}
-                  renderValue={(selected) => {
-                    if (!selected) {
-                      return <Typography variant="subtitle1">Sort By</Typography>;
-                    }
-
-                    return <Typography variant="subtitle2">Sort by ({sortBy})</Typography>;
-                  }}
-                >
-                  {allColumns.map((column) => {
-                    return (
-                      <MenuItem key={column.id} value={column.header}>
-                        {column.header}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-
-
-
-
-              <Button variant="contained" onClick={() => setCustomerModal(true)} size="large" startIcon={<Add />}>
-                Add Advisor Demo
-              </Button>
+            {/* Date time selection */}
+            <Stack direction="row" spacing={2}>
+              <ReactDatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date || undefined)} // Handle null as undefined
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                placeholderText="Start Date"
+                className="w-full rounded bg-dark-3 p-2 focus:outline-none"
+              />
+              <ReactDatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date || undefined)} // Handle null as undefined
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                placeholderText="End Date"
+                className="w-full rounded bg-dark-3 p-2 focus:outline-none"
+              />
             </Stack>
+
+            {/* Sort by legal domains */}
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <Select
+                value={selectedDomain}
+                onChange={handleChangeDomain}
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
+                renderValue={(selected) => {
+                  if (!selected) {
+                    return <Typography variant="subtitle1">Legal Domain</Typography>;
+                  }
+
+                  return <Typography variant="subtitle2">{selectedDomain}</Typography>;
+                }}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {legalDomains.map((domain, index) => (
+                  <MenuItem key={index} value={domain}>
+                    {domain}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <Select
+                value={sortBy}
+                onChange={handleChangeSort}
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
+                renderValue={(selected) => {
+                  if (!selected) {
+                    return <Typography variant="subtitle1">Sort By</Typography>;
+                  }
+
+                  return <Typography variant="subtitle2">Sort by ({sortBy})</Typography>;
+                }}
+              >
+                {allColumns.map((column) => {
+                  return (
+                    <MenuItem key={column.id} value={column.header}>
+                      {column.header}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
+
+            <Button variant="contained" onClick={() => setCustomerModal(true)} size="large" startIcon={<Add />}>
+              Add Advisor Demo
+            </Button>
           </Stack>
         </Stack>
       </Box>
