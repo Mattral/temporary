@@ -172,7 +172,7 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
                                   <Typography color="secondary">Institute</Typography>
-                                  <Typography>-</Typography>
+                                  <Typography>Massachusetts Institute of Technology</Typography>
                                 </Stack>
                               </Grid>
                             </Grid>
@@ -219,14 +219,14 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                             <Grid container spacing={matchDownMD ? 0.5 : 3}>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
-                                  <Typography color="secondary">Lead UX (Year)</Typography>
+                                  <Typography color="secondary">Law professor (Year)</Typography>
                                   <Typography>2019-Present</Typography>
                                 </Stack>
                               </Grid>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
                                   <Typography color="secondary">Company</Typography>
-                                  <Typography>India Pvt Ltd</Typography>
+                                  <Typography>Harvard</Typography>
                                 </Stack>
                               </Grid>
                             </Grid>
@@ -235,14 +235,14 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                             <Grid container spacing={matchDownMD ? 0.5 : 3}>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
-                                  <Typography color="secondary">Sr. UI/UX Designer (Year)</Typography>
+                                  <Typography color="secondary">Law associate (Year)</Typography>
                                   <Typography>2016-2019</Typography>
                                 </Stack>
                               </Grid>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
                                   <Typography color="secondary">Company</Typography>
-                                  <Typography>Creative Pvt Ltd</Typography>
+                                  <Typography>LegalMe Ltd</Typography>
                                 </Stack>
                               </Grid>
                             </Grid>
@@ -251,7 +251,7 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                             <Grid container spacing={matchDownMD ? 0.5 : 3}>
                               <Grid item xs={12} md={6}>
                                 <Stack spacing={0.5}>
-                                  <Typography color="secondary">UI/UX Designer (Year)</Typography>
+                                  <Typography color="secondary">Tax lawyer (Year)</Typography>
                                   <Typography>2013-2016</Typography>
                                 </Stack>
                               </Grid>
