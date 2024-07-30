@@ -85,8 +85,8 @@ const MeetingTypeList = () => {
       />
       <HomeCard
         img="/icons/schedule.svg"
-        title="Schedule Meeting"
-        description="Plan your meeting"
+        title="Schedule Own Meeting"
+        description="Plan your own meeting"
         className="bg-purple-1"
         handleClick={() => setMeetingState("isScheduleMeeting")}
       />

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-// MATERIAL-UI
+// MATERIAL - UI
 import { Theme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
-//import Link from '@mui/material/Link';
+import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -19,10 +19,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 
-// THIRD-PARTY
+// THIRD - PARTY
+import { PatternFormat } from 'react-number-format';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 
 // PROJECT IMPORTS
@@ -50,37 +49,15 @@ interface Props {
 
 const avatarImage = '/assets/images/users';
 
-const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-const timeSlots = Array.from({ length: 48 }, (_, index) => {
-  const hour = Math.floor(index / 2);
-  const minutes = index % 2 === 0 ? '00' : '30';
-  return `${hour.toString().padStart(2, '0')}:${minutes}`;
-});
-
 // ==============================|| CUSTOMER - CARD PREVIEW ||============================== //
 
 export default function CustomerPreview({ customer, open, onClose, editCustomer }: Props) {
   const matchDownMD = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const [openAlert, setOpenAlert] = useState(false);
-  const [selectedDay, setSelectedDay] = useState<string>('');
-  const [selectedTime, setSelectedTime] = useState<string>('');
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-
-  const handleDaySelection = (day: string) => setSelectedDay(day);
-  const handleTimeSelection = (time: string) => setSelectedTime(time);
 
   const handleClose = () => {
     setOpenAlert(!openAlert);
     onClose();
-  };
-
-  const handleRequest = () => {
-    setSnackbarOpen(true);
-  };
-
-  const handleSnackbarClose = () => {
-    setSnackbarOpen(false);
   };
 
   return (
@@ -197,7 +174,7 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                       </MainCard>
                     </Grid>
                     <Grid item xs={12}>
-                      <MainCard title="Employment">
+                      <MainCard title="Emplyment">
                         <List sx={{ py: 0 }}>
                           <ListItem divider>
                             <Grid container spacing={matchDownMD ? 0.5 : 3}>
@@ -254,39 +231,30 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
                   <MainCard>
                     <Stack spacing={2}>
                       <Stack spacing={0.5}>
-                        <Typography color="secondary">Select Day</Typography>
-                        <Stack direction="row" spacing={1} flexWrap="wrap">
-                          {daysOfWeek.map((day) => (
-                            <Button
-                              key={day}
-                              variant={selectedDay === day ? 'contained' : 'outlined'}
-                              onClick={() => handleDaySelection(day)}
-                              sx={{ mb: 1 }}
-                            >
-                              {day}
-                            </Button>
-                          ))}
-                        </Stack>
+                        <Typography color="secondary">Father Name</Typography>
+                        <Typography>
+                          Mr. {customer.firstName} {customer.lastName}
+                        </Typography>
                       </Stack>
                       <Stack spacing={0.5}>
-                        <Typography color="secondary">Select Time</Typography>
-                        <Stack direction="row" spacing={1} flexWrap="wrap">
-                          {timeSlots.map((time) => (
-                            <Button
-                              key={time}
-                              variant={selectedTime === time ? 'contained' : 'outlined'}
-                              onClick={() => handleTimeSelection(time)}
-                              sx={{ mb: 1 }}
-                            >
-                              {time}
-                            </Button>
-                          ))}
-                        </Stack>
+                        <Typography color="secondary">Email</Typography>
+                        <Typography>{customer.email}</Typography>
                       </Stack>
-                      <Stack spacing={2}>
-                        <Button variant="contained" onClick={handleRequest}>
-                          Request
-                        </Button>
+                      <Stack spacing={0.5}>
+                        <Typography color="secondary">Contact</Typography>
+                        <Typography>
+                          <PatternFormat displayType="text" format="+1 (###) ###-####" mask="_" defaultValue={customer.contact} />
+                        </Typography>
+                      </Stack>
+                      <Stack spacing={0.5}>
+                        <Typography color="secondary">Location</Typography>
+                        <Typography> {customer.country} </Typography>
+                      </Stack>
+                      <Stack spacing={0.5}>
+                        <Typography color="secondary">Website</Typography>
+                        <Link href="https://google.com" target="_blank" sx={{ textTransform: 'lowercase' }}>
+                          https://{customer.firstName}.en
+                        </Link>
                       </Stack>
                     </Stack>
                   </MainCard>
@@ -294,6 +262,7 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
               </Grid>
             </SimpleBar>
           </DialogContent>
+
           <DialogActions>
             <Button color="error" onClick={onClose}>
               Close
@@ -302,12 +271,6 @@ export default function CustomerPreview({ customer, open, onClose, editCustomer 
         </Box>
       </Dialog>
       <AlertCustomerDelete id={customer.id!} title={customer.name} open={openAlert} handleClose={handleClose} />
-
-      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
-        <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
-          Schedule request sent
-        </Alert>
-      </Snackbar>
     </>
   );
 }
