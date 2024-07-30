@@ -1,6 +1,6 @@
 "use client";
 
-import Alert from "components/Alert";
+//import Alert from "components/Alert";
 import Loader from "components/Loader";
 import MeetingRoom from "components/MeetingRoom";
 import MeetingSetup from "components/MeetingSetup";
@@ -13,30 +13,14 @@ import styles from './MeetingRoom.module.css'; // Import the CSS module
 
 const Meeting = () => {
   const { id } = useParams();
-  const { isLoaded, user } = useUser();
+  const { isLoaded } = useUser();
   const { call, isCallLoading } = useGetCallById(id);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
   // Show loader while user or call data is being fetched
   if (!isLoaded || isCallLoading) return <Loader />;
 
-  // Show message if call data is not found
-  if (!call)
-    return (
-      <p className="text-center text-3xl font-bold text-black">
-        Call Not Found
-      </p>
-    );
-
-  // Check if the user is allowed to join the call
-  const notAllowed =
-    call.type === "invited" &&
-    (!user || !call.state.members.find((m) => m.user.id === user.id));
-
-  if (notAllowed)
-    return <Alert title="You are not allowed to join this meeting" />;
-
-  // Render the meeting setup or meeting room based on setup completion
+  // Always render the video call and related components
   return (
     <main className={styles.mainContainer}> {/* Apply the mainContainer style */}
       <StreamCall call={call}>

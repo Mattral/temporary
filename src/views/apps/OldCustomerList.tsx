@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState, FC, Fragment, MouseEvent } from 'react';
+// Old code and unused! just reference!
+
+'use client';
+
+import { useCallback, useEffect, useMemo, useState, FC, Fragment, MouseEvent } from 'react';
+
+// MATERIAL - UI
 import { alpha, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Chip from '@mui/material/Chip';
@@ -11,24 +17,56 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import Typography from '@mui/material/Typography';
+
+// THIRD - PARTY
 import { PatternFormat } from 'react-number-format';
-import { useFilters, useExpanded, useGlobalFilter, useRowSelect, useSortBy, useTable, usePagination, Column, HeaderGroup, Row, Cell, HeaderProps } from 'react-table';
+import {
+  useFilters,
+  useExpanded,
+  useGlobalFilter,
+  useRowSelect,
+  useSortBy,
+  useTable,
+  usePagination,
+  Column,
+  HeaderGroup,
+  Row,
+  Cell,
+  HeaderProps
+} from 'react-table';
+
+// PROJECT IMPORTS
 import MainCard from 'components/MainCard';
 import ScrollX from 'components/ScrollX';
 import Avatar from 'components/@extended/Avatar';
 import IconButton from 'components/@extended/IconButton';
-import { CSVExport, HeaderSort, IndeterminateCheckbox, SortingSelect, TablePagination, TableRowSelection } from 'components/third-party/ReactTable';
+
+import {
+  CSVExport,
+  HeaderSort,
+  IndeterminateCheckbox,
+  SortingSelect,
+  TablePagination,
+  TableRowSelection
+} from 'components/third-party/ReactTable';
 import CustomerView from 'sections/apps/customer/CustomerView';
 import AlertCustomerDelete from 'sections/apps/customer/AlertCustomerDelete';
 import CustomerModal from 'sections/apps/customer/CustomerModal';
 import EmptyTables from 'views/forms-tables/tables/react-table/EmptyTable';
+
 import { useGetCustomer } from 'api/customer';
 import { renderFilterTypes, GlobalFilter } from 'utils/react-table';
-import { Add, Trash, Chart } from 'iconsax-react';
+
+// ASSETS
+import { Add, Edit, Eye, Trash } from 'iconsax-react';
+
+// TYPES
 import { ThemeMode } from 'types/config';
 import type { CustomerList } from 'types/customer';
 
 const avatarImage = '/assets/images/users';
+
+// ==============================|| REACT TABLE ||============================== //
 
 interface Props {
   columns: Column[];
@@ -82,6 +120,7 @@ function ReactTable({ columns, data, renderRowSubComponent, modalToggler }: Prop
     } else {
       setHiddenColumns(['avatar', 'email']);
     }
+    // eslint-disable-next-line
   }, [matchDownSM]);
 
   return (
@@ -158,6 +197,8 @@ function ReactTable({ columns, data, renderRowSubComponent, modalToggler }: Prop
     </>
   );
 }
+
+// ==============================|| CUSTOMER - LIST ||============================== //
 
 const CustomerList = () => {
   const theme = useTheme();
@@ -251,8 +292,7 @@ const CustomerList = () => {
         className: 'cell-center',
         disableSortBy: true,
         Cell: ({ row }: { row: Row<{}> }) => {
-          const { values } = row;
-          const status = values.status.toString();
+          const collapseIcon = row.isExpanded ? <Add style={{ color: theme.palette.error.main, transform: 'rotate(45deg)' }} /> : <Eye />;
           return (
             <Stack direction="row" alignItems="center" justifyContent="center" spacing={0}>
               <Tooltip
@@ -264,69 +304,69 @@ const CustomerList = () => {
                     }
                   }
                 }}
-                title="Message"
+                title="View"
               >
                 <IconButton
                   color="secondary"
                   onClick={(e: MouseEvent<HTMLButtonElement>) => {
                     e.stopPropagation();
-                    console.log(`Message to customer ID: ${row.values.id}`);
+                    row.toggleRowExpanded();
                   }}
                 >
-                  <Chart />
+                  {collapseIcon}
                 </IconButton>
               </Tooltip>
-              {status === '1' || status === '3' ? (
-                <Tooltip
-                  componentsProps={{
-                    tooltip: {
-                      sx: {
-                        backgroundColor: mode === ThemeMode.DARK ? theme.palette.grey[50] : theme.palette.grey[700],
-                        opacity: 0.9
-                      }
+              <Tooltip
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      backgroundColor: mode === ThemeMode.DARK ? theme.palette.grey[50] : theme.palette.grey[700],
+                      opacity: 0.9
                     }
+                  }
+                }}
+                title="Edit"
+              >
+                <IconButton
+                  color="primary"
+                  onClick={(e: MouseEvent<HTMLButtonElement>) => {
+                    e.stopPropagation();
+                    setCustomer(row.original);
+                    setCustomerModal(true);
                   }}
-                  title="Delete"
                 >
-                  <IconButton
-                    color="error"
-                    onClick={(e: MouseEvent<HTMLButtonElement>) => {
-                      e.stopPropagation();
-                      handleClose();
-                      setCustomerDeleteId(row.values.id);
-                    }}
-                  >
-                    <Trash />
-                  </IconButton>
-                </Tooltip>
-              ) : status === '2' ? (
-                <>
-                  <Button
-                    color="primary"
-                    onClick={(e: MouseEvent<HTMLButtonElement>) => {
-                      e.stopPropagation();
-                      console.log(`Approve customer ID: ${row.values.id}`);
-                    }}
-                  >
-                    Approve
-                  </Button>
-                  <Button
-                    color="error"
-                    onClick={(e: MouseEvent<HTMLButtonElement>) => {
-                      e.stopPropagation();
-                      console.log(`Reject customer ID: ${row.values.id}`);
-                    }}
-                  >
-                    Reject
-                  </Button>
-                </>
-              ) : null}
+                  <Edit />
+                </IconButton>
+              </Tooltip>
+              <Tooltip
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      backgroundColor: mode === ThemeMode.DARK ? theme.palette.grey[50] : theme.palette.grey[700],
+                      opacity: 0.9
+                    }
+                  }
+                }}
+                title="Delete"
+              >
+                <IconButton
+                  color="error"
+                  onClick={(e: MouseEvent<HTMLButtonElement>) => {
+                    e.stopPropagation();
+                    handleClose();
+                    setCustomerDeleteId(row.values.id);
+                  }}
+                >
+                  <Trash />
+                </IconButton>
+              </Tooltip>
             </Stack>
           );
         }
       }
     ],
-    [theme, handleClose, setCustomerDeleteId]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [theme]
   );
 
   const renderRowSubComponent = useCallback(({ row }: { row: Row<{}> }) => <CustomerView data={lists[Number(row.id)]} />, [lists]);
@@ -352,3 +392,5 @@ const CustomerList = () => {
 };
 
 export default CustomerList;
+
+
